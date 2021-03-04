@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   
   def home
+    if logged_in?
+      render ':users/show'
+    else
+      render :new
+    end
   end
 
   def new
