@@ -1,11 +1,9 @@
 class SessionsController < ApplicationController
-  
+  skip_before_action :require_login, except: [:destroy]
+  before_action :redirect_if_logged_in, except: [:destroy]
+
   def home
-    if logged_in?
-      render ':users/show'
-    else
-      render :new
-    end
+    render :new
   end
 
   def new
@@ -41,5 +39,9 @@ class SessionsController < ApplicationController
   private
   def auth
     request.env['omniauth.auth']
+  end
+
+  def redirect_if_logged_in
+    redirect_to user_path(current_user) if logged_in?
   end
 end
