@@ -1,7 +1,7 @@
 class CreateRoles < ActiveRecord::Migration[6.0]
   def change
     create_table :roles do |t|
-      t.belongs_to :user, null: false, foreign_key: true
+      t.belongs_to :user, null: false, foreign_key: true, index: true
       t.string :title, null: false, index: true
       t.text :description
       t.integer :age_requirement, default: 0
