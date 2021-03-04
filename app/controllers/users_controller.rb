@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:message] = "Unable to create account. Email must be unique and passwords must match."
+      flash[:alert] = "Unable to create account. Please try again or login."
       redirect_to signup_path
     end
   end
