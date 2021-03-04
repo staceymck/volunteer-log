@@ -1,0 +1,22 @@
+<div class="visitor flex">
+  <div>
+    <h1>VolunteerLog</h1>
+      <p>Track your volunteers, opportunities,and volunteer engagement records in one place for easier management and reporting.</p>
+      <p><%= button_to 'Sign in with GitHub', '/auth/github' %></p>
+  </div>
+
+  <div>
+    <h2><span>Sign Up</span> or <%= link_to 'login', login_path %></h2>
+      <%= form_for @user do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username %><br>
+        <%= f.label :email %>
+        <%= f.email_field :email %><br>
+        <%= f.label :password %>
+        <%= f.password_field :password %><br>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %><br>
+        <%= f.submit "Sign up" %>
+      <% end %>
+  </div>
+</div>
