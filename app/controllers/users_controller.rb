@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :redirect_if_logged_in, except: [:show, :destroy]
   
+  def show
+    @user = current_user
+  end
+
   def new
     @user = User.new
   end
