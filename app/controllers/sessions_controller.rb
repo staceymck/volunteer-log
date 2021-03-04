@@ -1,5 +1,22 @@
 class SessionsController < ApplicationController
   
+  def home
+  end
+
+  def new
+  end
+
+  def create
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+    else
+      flash[:alert] = "Unsuccessful login attempt. Please try again."
+      redirect_to login_path
+    end
+  end
+  
   def omniauth
     user = User.create_from_omniauth(auth)
     if user.valid?
@@ -9,6 +26,9 @@ class SessionsController < ApplicationController
       flash[:message] = user.errors.full_messages.join(“, “)
       redirect_to ‘/’
     end
+ end
+
+ def destroy
  end
 
   private
