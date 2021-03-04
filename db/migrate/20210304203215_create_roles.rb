@@ -7,7 +7,7 @@ class CreateRoles < ActiveRecord::Migration[6.0]
       t.integer :age_requirement, default: 0
       t.integer :frequency, default: 0
       t.string :days
-      t.boolean :background_check_required?, default: 0
+      t.boolean :background_check_required, default: 0
       t.integer :status, default: 0, index: true
 
       t.timestamps
