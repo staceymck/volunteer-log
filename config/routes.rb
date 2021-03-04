@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :users
-  get '/login' => 'sessions#new'
-  get '/auth/github/callback' => 'sessions#omniauth'
+  get '/login', to: 'sessions#new'
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
 end
