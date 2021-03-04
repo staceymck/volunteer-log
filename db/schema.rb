@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_203215) do
+ActiveRecord::Schema.define(version: 2021_03_04_204959) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer "volunteer_id", null: false
+    t.integer "role_id", null: false
+    t.date "date", null: false
+    t.float "duration", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id"], name: "index_activities_on_role_id"
+    t.index ["volunteer_id"], name: "index_activities_on_volunteer_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_203215) do
     t.integer "age_requirement", default: 0
     t.integer "frequency", default: 0
     t.string "days"
-    t.boolean "background_check_required?", default: false
+    t.boolean "background_check_required", default: false
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -42,14 +53,14 @@ ActiveRecord::Schema.define(version: 2021_03_04_203215) do
   create_table "volunteers", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.integer "age_group"
+    t.integer "age_group", default: 0
     t.string "phone"
     t.string "email"
     t.date "birthday"
     t.string "occupation"
     t.string "employer"
     t.text "interests"
-    t.integer "background_check_status"
+    t.integer "background_check_status", default: 0
     t.string "photo"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -59,6 +70,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_203215) do
     t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
+  add_foreign_key "activities", "roles"
+  add_foreign_key "activities", "volunteers"
   add_foreign_key "roles", "users"
   add_foreign_key "volunteers", "users"
 end
