@@ -7,7 +7,7 @@
 
   <div>
     <h2><span>Login</span> or <%= link_to 'sign up', signup_path %></h2>
-      <%= form_for :user do |f| %>
+      <%= form_for :user, url:'/login' do |f| %>
         <%= f.label :email %>
         <%= f.email_field :email %><br>
         <%= f.label :password %>
