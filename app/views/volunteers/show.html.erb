@@ -1,0 +1,36 @@
+<div>
+  <div>
+    Profile Image 
+  </div>
+  <div>
+    <p>Volunteer since XXXX</p>
+    <p>Total hours: <%= @volunteer.total_hours %></p>
+    <p>See all activity records - nested route here </p>
+    <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer) %></p>
+  </div>
+  <div>
+  </div>
+</div>
+<div>
+  <div>
+    <div>
+      <h1><%= @volunteer.full_name %></h1>
+      <p>Phone: <%= @volunteer.phone %></p>
+      <p>Email: <%= mail_to @volunteer.email %></p>
+    </div>
+    <div>
+      Add activity record buton!!!
+    </div>
+  </div>
+
+  <div>
+    <p>Background check status: <%= @volunteer.background_check_status.capitalize %><p>
+    <p>Occupation: <%= @volunteer.occupation %></p>
+    <p>Employer: <%= @volunteer.employer %></p>
+    <p>Birthday: <%= @volunteer.birthday %> ADD HELPER METHOD TO FORMAT</p>
+    <p>Age range: <%= @volunteer.age_group %> ADD HELPER METHOD TO FORMAT</p>
+    <p>Interests: <%= @volunteer.interests %></p>
+    <p>Roles: NEED HELPER METHOD HERE </p>
+  </div>
+<div>
+
