@@ -50,8 +50,10 @@ class VolunteersController < ApplicationController
   end
 
   def redirect_if_not_authorized
-    flash[:alert] = "Invalid record"
-    redirect_to '/' if @volunteer.user != current_user
+    if @volunteer.user != current_user
+      flash[:alert] = "Invalid record"
+      redirect_to '/'
+    end
   end
 
   def find_volunteer
