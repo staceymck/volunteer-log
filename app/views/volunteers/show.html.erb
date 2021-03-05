@@ -4,7 +4,7 @@
   </div>
   <div>
     <p>Volunteer since <%= @volunteer.start_year %></p>
-    <p>Total hours: <%= display_hours(@volunteer) %></p>
+    <p>Total hours: <%= display_hours(@volunteer.total_hours) %></p>
     <p>See all activity records - nested route here </p>
     <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer) %></p>
   </div>
