@@ -1,4 +1,20 @@
 class VolunteersController < ApplicationController
+  before_action :find_volunteer, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
+  #find_volunteer must come before redirect so that @volunteer has a value
+  
+  def index
+    if params[:search]
+      @volunteers = Volunteer.search(params[:search])
+    elsif params[:filter]
+      @volunteers = Volunteer.filter(params[:filter])
+    else
+      @volunteers = Volunteer.all
+    end
+  end
+
+  def show
+  end
+  
   def new
     @volunteer = Volunteer.new
   end
@@ -12,12 +28,18 @@ class VolunteersController < ApplicationController
     end
   end
 
-  def show
-    @volunteer = Volunteer.find(params[:id])
+  def edit
+  end
+
+  def update
+    if @volunteer.update(volunteer_params)
+      redirect_to volunteer_path(@volunteer)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @volunteer = Volunteer.find(params[:id])
     @volunteer.destroy
     redirect_to '/'
   end
@@ -25,5 +47,14 @@ class VolunteersController < ApplicationController
   private
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :email, :phone, :occupation, :employer, :birthday, :age_group, :background_check_status, :photo_link, :interests)
+  end
+
+  def redirect_if_not_authorized
+    flash[:alert] = "Invalid record"
+    redirect_to '/' if @volunteer.user != current_user
+  end
+
+  def find_volunteer
+    @volunteer = Volunteer.find(params[:id])
   end
 end
