@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <h1>Activity record</h1>
+  </div>
+  <div>
+    <%= button_to "X Delete record", activity_path(@activity), method: :delete %>
+  </div>
+</div>
+
+<div>
+  <p>Date: <%= format_date(@activity.date) %></p>
+  <p>Volunteer: <%= link_to @activity.volunteer.full_name, volunteer_path(@activity.volunteer) %></p>
+  <p>Role: <%= link_to @activity.role.title, role_path(@activity.role) %></p>
+  <p>Duration: <%= display_hours(@activity.duration) %> hours</p>
+</div>
+
+<div>
+  <%= link_to "Edit activity", edit_activity_path(@activity) %>
+</div>
