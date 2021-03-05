@@ -2,7 +2,7 @@ class RolesController < ApplicationController
   before_action :find_role, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
   
   def index
-    @roles = current_user.roles.all
+    @roles = current_user.roles.apply_query(params[:query])
   end
   
   def show
