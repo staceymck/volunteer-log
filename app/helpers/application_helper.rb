@@ -10,4 +10,8 @@ module ApplicationHelper
   def remove_underscores(attribute) 
     attribute.gsub("_", " ").capitalize
   end
+
+  def format_date(date)
+    date.strftime("%m/%d/%Y")
+  end
 end
