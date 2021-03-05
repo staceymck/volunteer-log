@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def display_yes_no(boolean_attribute)
-    boolean_attribute == 0 ? "No" : "Yes"
+    boolean_attribute == false ? "No" : "Yes"
   end
 end
