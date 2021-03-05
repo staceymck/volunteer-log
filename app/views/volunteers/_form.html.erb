@@ -1,0 +1,25 @@
+<%= form_for volunteer do |f| %>
+  <%= f.label :first_name%>
+  <%= f.text_field :first_name, required: true %><br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, required: true %><br>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %><br>
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
+  <%= f.label :occupation %>
+  <%= f.text_field :occupation %><br>
+  <%= f.label :employer %>
+  <%= f.text_field :employer %><br>
+  <%= f.label :birthday %>
+  <%= f.date_field :birthday %><br>
+  <%= f.label :age_group %>
+  <%= f.select :age_group, [["Under 18", "under_eighteen"], ["18-21", "over_eighteen"], ["Over 21", "over_twenty_one"]] %><br>
+  <%= f.label :background_check_status %>
+  <%= f.select :background_check_status, [["Incomplete", "incomplete"], ["Approved", "approved"], ["Flagged", "flagged"]] %><br>
+  <%= f.label :photo, "Photo link" %>
+  <%= f.url_field :photo %><br>
+  <%= f.label :interests %>
+  <%= f.text_area :interests %><br>
+  <%= f.submit "Save" %>
+<% end %>
