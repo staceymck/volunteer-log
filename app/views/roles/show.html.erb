@@ -8,8 +8,8 @@
 </div>
 <div>
   <p>Description: <%= @role.description %></p>
-  <p>Status: <%= @role.status.capitalize %></p>
-  <p>Frequency: <%= @role.frequency.capitalize %></p>
+  <p>Status: <%= remove_underscores(@role.status) %></p>
+  <p>Frequency: <%= remove_underscores(@role.frequency) %></p>
   <p>Days: <%= @role.days %></p>
   <p>Age requirement: <%= display_age_requirement(@role) %></p>
   <p>Background check required? <%= display_yes_no(@role.background_check_required)%></p>
