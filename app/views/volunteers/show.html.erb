@@ -3,8 +3,8 @@
     Profile Image 
   </div>
   <div>
-    <p>Volunteer since XXXX</p>
-    <p>Total hours: <%= display_hours(@volunteer.total_hours) %></p>
+    <p>Volunteer since <%= @volunteer.start_year %></p>
+    <p>Total hours: <%= display_hours(@volunteer) %></p>
     <p>See all activity records - nested route here </p>
     <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer) %></p>
   </div>
@@ -28,10 +28,10 @@
     <p>Background check status: <%= @volunteer.background_check_status.capitalize %><p>
     <p>Occupation: <%= @volunteer.occupation %></p>
     <p>Employer: <%= @volunteer.employer %></p>
-    <p>Birthday: <%= @volunteer.birthday %> ADD HELPER METHOD TO FORMAT</p>
-    <p>Age range: <%= @volunteer.age_group %> ADD HELPER METHOD TO FORMAT</p>
+    <p>Birthday: <%= display_birthday(@volunteer) %></p>
+    <p>Age range: <%= display_age_group(@volunteer) %></p>
     <p>Interests: <%= @volunteer.interests %></p>
-    <p>Roles: NEED HELPER METHOD HERE </p>
+    <p>Roles: <%= render partial: 'role_links', collection: @volunteer.roles.uniq, as: :role, spacer_template: 'shared/comma' || "No roles" %></p>
   </div>
 <div>
 
