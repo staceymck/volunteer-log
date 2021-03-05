@@ -5,22 +5,22 @@
 <div>
   <div>
     <h3>This month</h3>
-    <p>Total hours: </p>
-    <p>Total engagements: </p>
+    <p>Total hours: <%= display_hours(@user.hours_this_month) %></p>
+    <p>Total engagements: <%= @user.activities_this_month %> </p>
     <p>Unique volunteers: </p>
     <p>New volunteers: </p>
   </div>
   <div>
     <h3>This year</h3>
-    <p>Total hours: </p>
-    <p>Total engagements: </p>
+    <p>Total hours: <%= display_hours(@user.hours_this_year) %></p>
+    <p>Total engagements: <%= @user.activities_this_year %></p>
     <p>Unique volunteers: </p>
     <p>New volunteers: </p>
   </div>
   <div>
     <h3>Cummulative</h3>
-    <p>Total hours: </p>
-    <p>Total engagements: </p>
-    <p>Unique volunteers: </p>
+    <p>Total hours: <%= display_hours(@user.total_hours) %></p>
+    <p>Total engagements: <%= @user.total_activities %></p>
+    <p>Unique volunteers: <%= @user.unique_volunteers %></p>
   </div>
 </div>
