@@ -6,4 +6,19 @@ class Role < ApplicationRecord
   enum frequency: {ongoing: 0, one_time: 1}
   enum status: {recruiting: 0, not_recruiting: 1}
 
+  def self.apply_query(query)
+    if query.present?
+      if query == "recruiting"
+        where(status: "recruiting")
+      elsif query == "family-friendly"
+        where(age_requirement: chaperone_under_eighteen)
+      else
+        where("title LIKE ?", "%#{query}%")
+      end
+    else
+      all
+    end
+  end
+
 end
+
