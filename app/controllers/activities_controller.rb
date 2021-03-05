@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :find_activity, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
 
   def index
-    @activities = Activity.user_set(current_user) #can add either .oldest or .newest to order
+    @activities = Activity.user_set(current_user).apply_query(params[:query]) #can add either .oldest or .newest to order
   end
 
   def show
