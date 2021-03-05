@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <h1><%= @role.title.titlecase %></h1>
+  <div>
+  <div>
+  <p><%= button_to 'X Delete role', role_path(@role), method: :delete %></p>
+  </div>
+</div>
+<div>
+  <p>Description: <%= @role.description %></p>
+  <p>Status: <%= @role.status.capitalize %></p>
+  <p>Frequency: <%= @role.frequency.capitalize %></p>
+  <p>Days: <%= @role.days %></p>
+  <p>Age requirement: <%= display_age_requirement(@role) %></p>
+  <p>Background check required? <%= display_yes_no(@role.background_check_required)%></p>
+</div>
+<div>
+  <p> Add link to nested role/volunteers path </p>
+  <%= link_to 'Edit role', edit_role_path(@role) %>
+</div>
