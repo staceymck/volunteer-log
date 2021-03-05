@@ -9,12 +9,12 @@
 
 <div>
   <p><%= link_to "All roles", roles_path %>
-  | Apply a filter: <%= link_to "Recruiting", roles_path(keyword: "recruiting") %> | <%= link_to "Family-friendly", roles_path(keyword: "family-friendly") %>
+  | Apply a filter: <%= link_to "Recruiting", roles_path(query: "recruiting") %> | <%= link_to "Family-friendly", roles_path(query: "family-friendly") %>
   <%= form_tag roles_path, method: :get do %>
     <p><%= submit_tag "Search by title keyword:", name: nil %>
-    <%= text_field_tag :query, params[:query] %></p>
+    <%= text_field_tag :query %></p>
   <% end %>
-  </div>
+</div>
 
 <div>
  <% @roles.each do |role| %>
