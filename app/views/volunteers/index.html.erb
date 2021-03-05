@@ -1,0 +1,24 @@
+<div>
+  <div>
+    <h1>Volunteers</h1>
+  </div>
+
+  <div>
+    <p>Sort by
+    <%= form_tag volunteers_path, method: :get do %>
+      <p><%= submit_tag "Last name", name: nil %> 
+      <%= hidden_field :filter, params[:filter] %></p>
+    <% end %>
+
+
+    <%= form_tag volunteers_path, method: :get do %>
+      <p><%= submit_tag "Search by name:", name: nil %> 
+      <%= text_field_tag :search, params[:search] %></p>
+    <% end %>
+  </div>
+  <div>
+  <% @volunteers.each do |v| %>
+    <%= link_to v.full_name, volunteer_path(v) %> - <%= display_hours(v.total_hours) %><br>
+  <% end %>
+  </div>
+</div>
