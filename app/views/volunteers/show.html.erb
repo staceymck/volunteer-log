@@ -28,7 +28,7 @@
     <p>Background check status: <%= @volunteer.background_check_status.capitalize %><p>
     <p>Occupation: <%= @volunteer.occupation %></p>
     <p>Employer: <%= @volunteer.employer %></p>
-    <p>Birthday: <%= display_birthday(@volunteer) %></p>
+    <p>Birthday: <%= format_date(@volunteer.birthday) %></p>
     <p>Age range: <%= display_age_group(@volunteer) %></p>
     <p>Interests: <%= @volunteer.interests %></p>
     <p>Roles: <%= render partial: 'role_links', collection: @volunteer.roles.uniq, as: :role, spacer_template: 'shared/comma' || "No roles" %></p>
