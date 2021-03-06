@@ -1,0 +1,11 @@
+<%= form_for activity do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date, required: true %><br>
+  <%= f.label :duration, "Duration (hrs)" %>
+  <%= f.number_field :duration, min: 0.25, step: 0.25, required: true %><br>
+  <%= f.label :volunteer_id, "Volunteer" %>
+  <%= f.collection_select :volunteer_id, volunteers, :id, :full_name, prompt: true %><br>
+  <%= f.label :role_id, "Role" %>
+  <%= f.collection_select :role_id, roles, :id, :title, prompt: true %><br>
+  <%= f.submit "Save" %>
+<% end %>

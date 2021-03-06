@@ -26,6 +26,8 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    @volunteers = current_user.volunteers.alpha
+    @roles = current_user.roles.alpha
   end
 
   def update
