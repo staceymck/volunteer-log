@@ -5,8 +5,9 @@ class Activity < ApplicationRecord
   scope :newest, -> {order(date: :desc)}
   scope :oldest, -> {order(:date)}
   validates :date, :duration, :volunteer_id, :role_id, presence: true
+  validates :duration, numericality: {greater_than: 0, less_than_or_equal_to: 24} #make it a float?
   validate :date_cannot_be_in_future
-  #validate that volunteer id and role id must belong to user?
+  #validate that volunteer id and role id must belong to user (and that it has both)?
 
   # def self.user_set(user)
   #   joins(:volunteer).where(volunteers: {user_id: user.id})
