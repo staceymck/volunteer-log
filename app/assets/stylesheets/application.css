@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+  --green: #14AF77;
+  --dark-gray: #090909;
+  --light-gray: #C9C5C5;
+}
+
+body { 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: var(--dark-gray);
+}
