@@ -25,3 +25,42 @@ body {
   font-weight: 300;
   color: var(--dark-gray);
 }
+
+.page-container {
+  width: auto;
+  padding: 3% 10%;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav a {
+  color: var(--dark-gray);
+}
+
+.link-block a  {
+  margin: .75rem;
+}
+
+#site-title a {
+  color: var(--green);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+nav hr {
+  background-color: var(--green);
+  height: 1.5px;
+  margin: 2rem 0;
+  border: none;
+}
