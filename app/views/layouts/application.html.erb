@@ -12,19 +12,23 @@
   </head>
 
   <body>
-    <nav>
-      <% if current_user %>
-      <div>
-        <%= link_to 'VolunteerLog', '/' %> 
-      </div>
-      <div>
-        <%= link_to 'Volunteers', volunteers_path %> |
-        <%= link_to 'Roles', roles_path %> |
-        <%= link_to 'Activity Records', activities_path %> |
-        <%= link_to 'Logout', logout_path, method: 'delete' %> 
-      </div>
-     <% end %>
-    </nav>
+    <div class="page-container">
+    <% if current_user %>
+      <nav>
+        <div class="navbar">
+          <div id="site-title">
+            <%= link_to 'VolunteerLog', '/' %> 
+          </div>
+          <div class= "link-block">
+            <%= link_to 'Volunteers', volunteers_path %> |
+            <%= link_to 'Roles', roles_path %> |
+            <%= link_to 'Activity Records', activities_path %> |
+            <%= link_to 'Logout', logout_path, method: 'delete' %> 
+          </div>
+        </div>
+      <hr>
+     </nav>
+    <% end %>
     <% if flash[:alert] %>
       <div class="alert">
         <%= flash[:alert] %>
@@ -32,7 +36,7 @@
     <% end %>
     
     <%= yield %>
-
+    </div>
     <footer>
       <%= link_to 'Home', '/' %> | <%= link_to 'GitHub Repo', 'https://github.com/staceymck/volunteer-log' %>
     </footer>
