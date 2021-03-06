@@ -6,6 +6,9 @@ class Role < ApplicationRecord
   enum frequency: {ongoing: 0, one_time: 1}
   enum status: {recruiting: 0, no_current_opportunities: 1}
   scope :alpha, -> {order(:title)}
+  validates :title, :age_requirement, :frequency, :status, :background_check_required, presence: true
+  #validates :background_check_required, inclusion: [true, false]
+  #validates that it belongs to a user
 
   def self.apply_query(query)
     if query.present?
