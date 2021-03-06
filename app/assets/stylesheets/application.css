@@ -31,6 +31,12 @@ body {
   padding: 3% 10%;
 }
 
+/* Font styles */
+.emphasis {
+  font-weight: 500;
+}
+
+/* Links */
 a {
   color: var(--green);
   text-decoration: none;
@@ -60,7 +66,7 @@ nav a {
 
 nav hr {
   background-color: var(--green);
-  height: 1.5px;
-  margin: 2rem 0;
+  height: 2px;
+  margin: 1.5rem 0rem 2rem 0rem;
   border: none;
 }
