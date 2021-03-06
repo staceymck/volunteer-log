@@ -10,6 +10,8 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @volunteers = current_user.volunteers.alpha
+    @roles = current_user.roles.alpha
   end
 
   def create
@@ -17,6 +19,8 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to activity_path(@activity)
     else
+      @volunteers = current_user.volunteers.alpha
+      @roles = current_user.roles.alpha
       render :new #fields with errors
     end
   end
