@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :find_activity, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
-
+  #is there a way to refactor the set_user_roles and volunteers into a before_render action?
+  
   def index
     @activities = Activity.user_set(current_user).apply_query(params[:query]) #can add either .oldest or .newest to order
   end
@@ -8,10 +9,10 @@ class ActivitiesController < ApplicationController
   def show
   end
 
-  def new
+  def new #redirects to activity page if your save is unsuccessful and you press refresh - why?
     @activity = Activity.new
-    @volunteers = current_user.volunteers.alpha
-    @roles = current_user.roles.alpha
+    set_user_volunteers
+    set_user_roles
   end
 
   def create
@@ -19,21 +20,23 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to activity_path(@activity)
     else
-      @volunteers = current_user.volunteers.alpha
-      @roles = current_user.roles.alpha
+      set_user_volunteers
+      set_user_roles
       render :new #fields with errors
     end
   end
 
   def edit
-    @volunteers = current_user.volunteers.alpha
-    @roles = current_user.roles.alpha
+    set_user_volunteers
+    set_user_roles
   end
 
   def update
     if @activity.update(activity_params)
       redirect_to activity_path(@activity)
     else
+      set_user_volunteers
+      set_user_roles
       render :edit #fields with errors
     end
   end
@@ -57,5 +60,13 @@ class ActivitiesController < ApplicationController
       flash[:alert] = "Invalid record"
       redirect_to '/'
     end
+  end
+
+  def set_user_volunteers
+    @volunteers = current_user.volunteers.alpha
+  end
+
+  def set_user_roles
+    @roles = current_user.roles.alpha
   end
 end
