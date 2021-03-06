@@ -4,6 +4,9 @@ class Activity < ApplicationRecord
   scope :user_set, -> (user) {joins(:volunteer).where(volunteers: {user_id: user.id})}
   scope :newest, -> {order(date: :desc)}
   scope :oldest, -> {order(:date)}
+  validates :date, :duration, :volunteer_id, :role_id, presence: true
+  validate :date_cannot_be_in_future
+  #validate that volunteer id and role id must belong to user?
 
   # def self.user_set(user)
   #   joins(:volunteer).where(volunteers: {user_id: user.id})
@@ -20,6 +23,13 @@ class Activity < ApplicationRecord
       end
     else
       newest
+    end
+  end
+
+  #make this a private method?
+  def date_cannot_be_in_future
+    if date > Date.today
+      errors.add(:date, "can't be in the future")
     end
   end
 
