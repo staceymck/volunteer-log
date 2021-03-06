@@ -1,3 +1,41 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+/* User Dashboard */
+.dashboard .link-block a:first-child {
+  margin-left: initial;
+}
+
+.dashboard .link-block {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.dashboard h1 {
+  font-size: 1.5rem;
+}
+
+.dashboard hr {
+  margin: 1.5rem 0;
+  background-color: var(--light-gray);
+  height: 1px;
+  border: none;
+}
+
+.tri-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.dashboard h2 {
+  font-size: 2rem;
+}
+
+.dashboard h3 {
+  margin-top: .75rem;
+  font-size: 1.5rem;
+  color: var(--green);
+}
