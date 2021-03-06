@@ -34,7 +34,7 @@ class RolesController < ApplicationController
 
   def destroy
     @role.destroy
-    redirect_to '/'
+    redirect_to roles_path
   end
 
   private
