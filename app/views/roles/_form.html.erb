@@ -8,7 +8,7 @@
   <%= f.label :frequency %>
   <%= f.select :frequency, [["Ongoing", "ongoing"], ["One time", "one_time"]] %><br>
   <%= f.label :status %>
-  <%= f.select :status, [["Recruiting", "recruiting"], ["Not Recruiting", "not_recruiting"]] %><br>
+  <%= f.select :status, [["Recruiting", "recruiting"], ["No current opportunities", "no_current_opportunities"]] %><br>
   <%= f.label :background_check_required, "Background check required?" %>
   <%= f.check_box :background_check_required %><br>
   <%= f.submit "Save" %>
