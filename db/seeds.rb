@@ -72,7 +72,7 @@ Volunteer.all.each do |vol|
       eligible_roles << role
     end
     #elibible if volunteer is under 18 and role is open to those under 18
-    # elsif vol.under_eighteen? && role.chaperone_under_eighteen?
+    # elsif vol.under_eighteen? && role.chaperone_if_under_eighteen?
     #   eligible_roles << role
     # #eligible if volunteer is over 18+ and position is open to those over 18
     # elsif role.over_eighteen? && vol.over_eighteen? 
