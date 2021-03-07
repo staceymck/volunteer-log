@@ -36,9 +36,12 @@
     <% end %>
     
     <%= yield %>
+    <div class="push"></div>
     </div>
     <footer>
-      <%= link_to 'Home', '/' %> | <%= link_to 'GitHub Repo', 'https://github.com/staceymck/volunteer-log' %>
+      <div class="link-block">
+        <%= link_to 'Home', '/' %> | <%= link_to 'GitHub Repo', 'https://github.com/staceymck/volunteer-log' %>
+      </div>
     </footer>
   </body>
 </html>

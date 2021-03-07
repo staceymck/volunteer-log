@@ -20,6 +20,11 @@
   --light-gray: #C9C5C5;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body { 
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -29,6 +34,8 @@ body {
 .page-container {
   width: auto;
   padding: 3% 10%;
+  min-height: 90vh;
+  margin-bottom: -50px;
 }
 
 /* Font styles */
@@ -69,4 +76,17 @@ nav hr {
   height: 2px;
   margin: 1.5rem 0rem 2rem 0rem;
   border: none;
+}
+
+/* Footer */
+footer {
+  height: 50px;
+  text-align: right;
+  color: var(--green);
+  width: auto;
+  padding: 0% 10%;
+}
+
+.push {
+  height: 50px;
 }
