@@ -9,10 +9,10 @@
 
 <div>
   <div class="filter-options">
-    <%= link_to "All roles", roles_path %>
     <span>Apply a filter:</span>
     <%= link_to "Recruiting", roles_path(query: "recruiting") %> | 
-    <%= link_to "Family-friendly", roles_path(query: "family-friendly") %>
+    <%= link_to "Family-friendly", roles_path(query: "family-friendly") %> |
+    <%= link_to "All roles", roles_path %>
   </div>
   <%= form_tag roles_path, method: :get do %>
     <p><%= submit_tag "Search by title keyword:", name: nil %>
@@ -21,8 +21,21 @@
 </div>
 
 <div>
- <% @roles.each do |role| %>
-    <p><%= link_to role.title, role_path(role) %> - <%= remove_underscores(role.status) %> - <%= remove_underscores(role.frequency) %></p>
-  <% end %>
+  <table class="full-width">
+    <tr>
+      <th><%= link_to "Title", :query => "title" %></th>
+      <th><%= link_to "Status", :query => "status" %></th>
+      <th><%= link_to "Frequency", :query => "frequency" %></th>
+      <th><%= link_to "Age requirement", :query => "age" %></th>
+    </tr>
+    <% @roles.each do |role| %>
+      <tr class="table-content">
+        <td><%= link_to role.title, role_path(role) %></td>
+        <td><%= remove_underscores(role.status) %></td>
+        <td><%= remove_underscores(role.frequency) %></td>
+        <td><%= display_age_requirement(role) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
