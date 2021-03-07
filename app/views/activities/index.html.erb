@@ -1,14 +1,14 @@
-<div>
+<div class="flex-row">
   <div>
     <h1>Activity Records</h1>
   </div>
   <div>
-    <%= link_to "Add new record", new_activity_path %>
+    <%= link_to "Add new record", new_activity_path, class: "button" %>
   </div>
 </div>
 
 <div>
-  <div>
+  <div class="filter-options">
     <p>Sort by <%= link_to "Newest", activities_path(query: "newest") %> | <%= link_to "Oldest", activities_path(query: "oldest") %></p>
   </div>
   <div>
