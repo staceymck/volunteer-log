@@ -3,13 +3,7 @@ class VolunteersController < ApplicationController
   #find_volunteer must come before redirect so that @volunteer has a value
   
   def index
-    if params[:search]
-      @volunteers = Volunteer.search(params[:search])
-    elsif params[:filter]
-      @volunteers = Volunteer.filter(params[:filter])
-    else
-      @volunteers = Volunteer.all
-    end
+    @volunteers = current_user.volunteers.apply_query(params[:query])
   end
 
   def show
