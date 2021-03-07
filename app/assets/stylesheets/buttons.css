@@ -1,10 +1,10 @@
 /* Buttons */
 .button, input[type="submit"] {
   padding: .5em 3em;
-  border-color: var(--green);
+  border-color: var(--primary);
   border-radius: 6px;
   text-decoration: none;
-  background: var(--green);
+  background: var(--primary);
   color: #fff;
   font-weight: 500;
   width: initial;

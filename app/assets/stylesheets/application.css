@@ -15,9 +15,10 @@
  */
 
 :root {
-  --green: #14AF77;
-  --dark-gray: #090909;
-  --light-gray: #C9C5C5;
+  --primary: #14AF77;
+  --main-font-color: #090909;
+  --medium-gray: #C9C5C5;
+  --light-gray: 
 }
 
 html, body {
@@ -28,7 +29,7 @@ html, body {
 body { 
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  color: var(--dark-gray);
+  color: var(--main-font-color);
 }
 
 .page-container {
@@ -45,12 +46,12 @@ body {
 
 /* Links */
 a {
-  color: var(--green);
+  color: var(--primary);
   text-decoration: none;
 }
 
 /* Navbar */
-.navbar {
+.navbar, .flex-row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -58,21 +59,21 @@ a {
 }
 
 nav a {
-  color: var(--dark-gray);
+  color: var(--main-font-color);
 }
 
-.link-block a  {
+.link-block a {
   margin: .75rem;
 }
 
 #site-title a {
-  color: var(--green);
+  color: var(--primary);
   font-weight: 500;
   font-size: 1.5rem;
 }
 
 nav hr {
-  background-color: var(--green);
+  background-color: var(--primary);
   height: 2px;
   margin: 1.5rem 0rem 2rem 0rem;
   border: none;
@@ -82,11 +83,19 @@ nav hr {
 footer {
   height: 50px;
   text-align: right;
-  color: var(--green);
+  color: var(--primary);
   width: auto;
   padding: 0% 10%;
 }
 
 .push {
   height: 50px;
+}
+
+.filter-options {
+  font-weight: 500;
+}
+
+.filter-options a:first-child {
+  margin-left: initial;
 }
