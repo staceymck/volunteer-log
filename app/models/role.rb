@@ -14,13 +14,21 @@ class Role < ApplicationRecord
     if query.present?
       if query == "recruiting"
         where(status: "recruiting")
+      elsif query == "status"
+        order(:status)
+      elsif query == "age"
+        order(:age_requirement)
+      elsif query == "frequency"
+        order(:frequency)
       elsif query == "family-friendly"
         where(age_requirement: :chaperone_if_under_eighteen)
+      elsif query == "title"
+        alpha
       else
         where("title LIKE ?", "%#{query}%")
       end
     else
-      all
+      alpha
     end
   end
 
