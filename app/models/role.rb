@@ -15,7 +15,7 @@ class Role < ApplicationRecord
       if query == "recruiting"
         where(status: "recruiting")
       elsif query == "family-friendly"
-        where(age_requirement: chaperone_if_under_eighteen)
+        where(age_requirement: :chaperone_if_under_eighteen)
       else
         where("title LIKE ?", "%#{query}%")
       end
