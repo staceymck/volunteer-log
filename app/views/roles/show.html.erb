@@ -1,9 +1,9 @@
-<div>
+<div class="flex-row">
   <div>
     <h1><%= @role.title.titlecase %></h1>
   </div>
   <div>
-    <p><%= button_to 'X Delete role', role_path(@role), method: :delete %></p>
+    <p><%= button_to 'X Delete role', role_path(@role), method: :delete, class: 'button delete' %></p>
   </div>
 </div>
 <div>
@@ -16,5 +16,5 @@
 </div>
 <div>
   <p>Add link to nested role/volunteers path</p>
-  <%= link_to 'Edit role', edit_role_path(@role) %>
+  <%= link_to 'Edit role', edit_role_path(@role), class: "button" %>
 </div>

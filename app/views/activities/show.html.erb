@@ -1,9 +1,9 @@
-<div>
+<div class="flex-row">
   <div>
     <h1>Activity record</h1>
   </div>
   <div>
-    <%= button_to "X Delete record", activity_path(@activity), method: :delete %>
+    <%= button_to "X Delete record", activity_path(@activity), method: :delete, class: "button delete" %>
   </div>
 </div>
 
@@ -15,5 +15,5 @@
 </div>
 
 <div>
-  <%= link_to "Edit activity", edit_activity_path(@activity) %>
+  <%= link_to "Edit activity", edit_activity_path(@activity), class: "button" %>
 </div>

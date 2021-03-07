@@ -9,7 +9,7 @@
     <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer) %></p>
   </div>
   <div>
-    <%= button_to 'Delete volunteer', volunteer_path(@volunteer), method: :delete %>
+    <%= button_to 'X Delete volunteer', volunteer_path(@volunteer), method: :delete, class: "button delete" %>
   </div>
 </div>
 <div>
