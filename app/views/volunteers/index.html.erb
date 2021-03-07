@@ -7,20 +7,29 @@
   </div>
 </div>
 
-<div class="filter-options">
-  <p>Sort by
+<div>
   <%= form_tag volunteers_path, method: :get do %>
-    <p><%= submit_tag "Last name", name: nil %> 
-    <%= hidden_field :filter, params[:filter] %></p>
-  <% end %>
-  <%= form_tag volunteers_path, method: :get do %>
-    <p><%= submit_tag "Search by name:", name: nil %> 
-    <%= text_field_tag :search, params[:search] %></p>
+    <%= label_tag :query, "Search by name" %>
+    <%= text_field_tag :query %>
+    <%= submit_tag "Search", name: nil, class: "button-search"%> 
   <% end %>
 </div>
 
 <div>
+  <table class="full-width">
+    <tr>
+      <th><%= link_to "First name", :query => "first_name" %></th>
+      <th><%= link_to "Last name", :query => "last_name" %></th>
+      <th><%= link_to "Last volunteer date", :query => "date" %></th>
+      <th><%= link_to "Total hours", :query => "hours" %></th>
+    <tr>
   <% @volunteers.each do |v| %>
-    <%= link_to v.full_name, volunteer_path(v) %> - <%= display_hours(v.total_hours) %><br>
+    <tr class="table-content">
+      <td><%= link_to v.first_name, volunteer_path(v) %></td>
+      <td><%= v.last_name %></td>
+      <td><%= format_date(v.last_activity_date) %></td>
+      <td><%= display_hours(v.total_hours) %></td>
+    </tr>
   <% end %>
+  </table>
 </div>
