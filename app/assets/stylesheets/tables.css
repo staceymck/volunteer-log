@@ -24,3 +24,17 @@ tr:hover{
 tr:first-child:hover {
   background: initial;
 }
+
+.scroll {
+  overflow-y: scroll;
+  max-height: 50vh;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--light-gray);
+}
+
+thead th.scroll {
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
