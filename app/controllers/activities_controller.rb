@@ -3,24 +3,38 @@ class ActivitiesController < ApplicationController
   #is there a way to refactor the set_user_roles and volunteers into a before_render action?
   
   def index
-    @activities = Activity.user_set(current_user).apply_query(params[:query]) #can add either .oldest or .newest to order
+    if params[:volunteer_id] && @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
+      @activities = @volunteer.activities.apply_query(params[:query])
+    else
+      @error = "Volunteer doesn't exist" if params[:volunteer_id]
+      @activities = Activity.user_set(current_user).apply_query(params[:query])
+    end
   end
 
   def show
   end
 
   def new #redirects to activity page if your save is unsuccessful and you press refresh - why?
-    @activity = Activity.new
-    set_user_volunteers
     set_user_roles
+    if params[:volunteer_id] && @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
+      @activity = @volunteer.activities.build
+    else
+      @error = "Volunteer doesn't exist" if params[:volunteer_id]
+      @activity = Activity.new
+      set_user_volunteers
+    end
   end
 
   def create
     @activity = current_user.activities.build(activity_params)
     if @activity.save
       redirect_to activity_path(@activity)
-    else
-      set_user_volunteers
+    else #if form has errors, need to render with @volunteer value still set
+      if params[:volunteer_id]
+        @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
+      else
+        set_user_volunteers
+      end
       set_user_roles
       render :new #fields with errors
     end
