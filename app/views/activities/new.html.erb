@@ -1,2 +1,2 @@
-<h1>Add a new activity record</h1>
-<%= render partial: 'form', locals: {activity: @activity, volunteers: @volunteers, roles: @roles} %>
+<h1>Add a new activity record<%= " for #{@volunteer.full_name}" if @volunteer %></h1>
+<%= render partial: 'form', locals: {activity: @activity, volunteers: @volunteers, roles: @roles, volunteer: @volunteer} %>
