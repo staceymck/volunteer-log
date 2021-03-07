@@ -28,12 +28,13 @@ tr:first-child:hover {
 .scroll {
   overflow-y: scroll;
   max-height: 50vh;
+  padding-bottom: 1rem;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: var(--light-gray);
 }
 
-thead th.scroll {
+.scroll thead th {
   position: sticky;
   top: 0;
   background: #fff;
