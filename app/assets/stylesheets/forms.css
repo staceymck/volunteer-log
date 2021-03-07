@@ -1,0 +1,26 @@
+form label {
+  font-weight: 500;
+}
+
+input, textarea, select {
+  width: 70%;
+  padding: 7px 10px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid var(--light-gray);
+  box-sizing: border-box;
+}
+
+select, input[type="date"], input[type="number"] {
+  width: initial;
+}
+
+input[type="checkbox"] {
+  width: initial;
+  vertical-align: middle;
+  margin-right: .25rem;
+}
+
+textarea {
+  min-height: 100px;
+}
