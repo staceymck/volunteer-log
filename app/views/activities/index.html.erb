@@ -19,6 +19,25 @@
   </div>
 </div>
 
-<% @activities.each do |activity| %>
-  <p><%= link_to format_date(activity.date), activity_path(activity) %> - <%= activity.volunteer.full_name %> - <%= activity.role.title %> - <%= display_hours(activity.duration) %></p>
-<% end %>
+<div class="scroll">
+  <table class="full-width">
+    <thead>
+      <tr>
+        <th><%= link_to "Date", :query => "date" %></th>
+        <th><%= link_to "Volunteer", :query => "name" %></th>
+        <th><%= link_to "Role", :query => "role" %></th>
+        <th><%= link_to "Duration (hrs)", :query => "duration" %></th>
+      <tr>
+    </thead>
+    <tbody>
+      <% @activities.each do |activity| %>
+        <tr class="table-content">
+          <td><%= link_to format_date(activity.date), activity_path(activity) %></td>
+          <td><%= activity.volunteer.full_name %></td>
+          <td><%= activity.role.title %></td>
+          <td><%= display_hours(activity.duration) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
