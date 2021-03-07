@@ -8,4 +8,19 @@
   color: #fff;
   font-weight: 500;
   width: initial;
+  transition-duration: 0.2s;
+}
+
+.button.delete {
+  border: none;
+  background: initial;
+  color: var(--light-gray);
+  font-size: 1rem;
+  padding: initial;
+  
+}
+
+.button.delete:hover {
+  color: red;
+  cursor: pointer;
 }
