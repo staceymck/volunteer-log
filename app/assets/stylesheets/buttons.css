@@ -1,0 +1,11 @@
+/* Buttons */
+.button, input[type="submit"] {
+  padding: .5em 3em;
+  border-color: var(--green);
+  border-radius: 6px;
+  text-decoration: none;
+  background: var(--green);
+  color: #fff;
+  font-weight: 500;
+  width: initial;
+}
