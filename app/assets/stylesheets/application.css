@@ -16,9 +16,10 @@
 
 :root {
   --primary: #14AF77;
+  --primary-dark: #0d724d;
   --main-font-color: #090909;
   --medium-gray: #C9C5C5;
-  --light-gray: 
+  --light-gray: #f2f2f2;
 }
 
 html, body {
@@ -48,6 +49,10 @@ body {
 a {
   color: var(--primary);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
 }
 
 /* Navbar */
