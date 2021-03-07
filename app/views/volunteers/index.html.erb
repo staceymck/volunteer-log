@@ -15,21 +15,25 @@
   <% end %>
 </div>
 
-<div>
+<div class="scroll">
   <table class="full-width">
-    <tr>
-      <th><%= link_to "First name", :query => "first_name" %></th>
-      <th><%= link_to "Last name", :query => "last_name" %></th>
-      <th><%= link_to "Last volunteer date", :query => "date" %></th>
-      <th><%= link_to "Total hours", :query => "hours" %></th>
-    <tr>
-  <% @volunteers.each do |v| %>
-    <tr class="table-content">
-      <td><%= link_to v.first_name, volunteer_path(v) %></td>
-      <td><%= v.last_name %></td>
-      <td><%= format_date(v.last_activity_date) %></td>
-      <td><%= display_hours(v.total_hours) %></td>
-    </tr>
-  <% end %>
+    <thead>
+      <tr>
+        <th><%= link_to "First name", :query => "first_name" %></th>
+        <th><%= link_to "Last name", :query => "last_name" %></th>
+        <th><%= link_to "Last volunteer date", :query => "date" %></th>
+        <th><%= link_to "Total hours", :query => "hours" %></th>
+      <tr>
+    </thead>
+    <tbody>
+      <% @volunteers.each do |v| %>
+        <tr class="table-content">
+          <td><%= link_to v.first_name, volunteer_path(v) %></td>
+          <td><%= v.last_name %></td>
+          <td><%= format_date(v.last_activity_date) %></td>
+          <td><%= display_hours(v.total_hours) %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
