@@ -28,7 +28,7 @@
     <p><span class="emphasis">Background check status: </span><%= @volunteer.background_check_status.capitalize %><p>
     <p><span class="emphasis">Occupation: </span><%= @volunteer.occupation %></p>
     <p><span class="emphasis">Employer: </span><%= @volunteer.employer %></p>
-    <p><span class="emphasis">Birthday: </span><%= format_date(@volunteer.birthday) %></p>
+    <p><span class="emphasis">Birthday: </span><%= display_date(@volunteer.birthday) %></p>
     <p><span class="emphasis">Age range: </span><%= display_age_group(@volunteer) %></p>
     <p><span class="emphasis">Interests: </span><%= @volunteer.interests %></p>
     <p><span class="emphasis">Roles: </span><%= render partial: 'role_links', collection: @volunteer.roles.uniq, as: :role, spacer_template: 'shared/comma' || "No roles" %></p>

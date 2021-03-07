@@ -11,7 +11,7 @@ module ApplicationHelper
     attribute.gsub("_", " ").capitalize
   end
 
-  def format_date(date)
-    date.strftime("%m/%d/%Y")
+  def display_date(date)
+    date.try {strftime("%m/%d/%Y") }
   end
 end

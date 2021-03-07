@@ -8,7 +8,7 @@
 </div>
 
 <div>
-  <p>Date: <%= format_date(@activity.date) %></p>
+  <p>Date: <%= display_date(@activity.date) %></p>
   <p>Volunteer: <%= link_to @activity.volunteer.full_name, volunteer_path(@activity.volunteer) %></p>
   <p>Role: <%= link_to @activity.role.title, role_path(@activity.role) %></p>
   <p>Duration: <%= display_hours(@activity.duration) %> hours</p>
