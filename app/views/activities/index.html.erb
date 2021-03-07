@@ -1,30 +1,38 @@
 <div class="flex-row">
   <div>
-    <h1>Activity Records</h1>
+    <h1>Activity Records<%= " for #{@volunteer.full_name}" if @volunteer %></h1>
   </div>
   <div>
+    <% if @volunteer %>
+      <%= link_to "Add new record for #{@volunteer.first_name}", new_volunteer_activity_path, class: "button" %>
+    <% else %>
     <%= link_to "Add new record", new_activity_path, class: "button" %>
-  </div>
-</div>
-
-<div>
-  <div class="filter-options">
-    <p>Sort by <%= link_to "Newest", activities_path(query: "newest") %> | <%= link_to "Oldest", activities_path(query: "oldest") %></p>
-  </div>
-  <div>
-    <%= form_tag activities_path, method: :get do %>
-      <p><%= submit_tag "Search by volunteer:", name: nil %>
-      <%= text_field_tag :query %></p>
     <% end %>
   </div>
 </div>
+
+<% if !@volunteer %>
+  <div>
+    <div class="filter-options">
+      <p>Sort by <%= link_to "Newest", activities_path(query: "newest") %> | <%= link_to "Oldest", activities_path(query: "oldest") %></p>
+    </div>
+    <div>
+      <%= form_tag activities_path, method: :get do %>
+        <p><%= submit_tag "Search by volunteer:", name: nil %>
+        <%= text_field_tag :query %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="scroll">
   <table class="full-width">
     <thead>
       <tr>
         <th><%= link_to "Date", :query => "date" %></th>
-        <th><%= link_to "Volunteer", :query => "name" %></th>
+        <% if !@volunteer %>
+          <th><%= link_to "Volunteer", :query => "name" %></th>
+        <% end %>
         <th><%= link_to "Role", :query => "role" %></th>
         <th><%= link_to "Duration (hrs)", :query => "duration" %></th>
       <tr>
@@ -33,7 +41,9 @@
       <% @activities.each do |activity| %>
         <tr class="table-content">
           <td><%= link_to display_date(activity.date), activity_path(activity) %></td>
-          <td><%= activity.volunteer.full_name %></td>
+          <% if !@volunteer %>
+            <td><%= activity.volunteer.full_name %></td>
+          <% end %>
           <td><%= activity.role.title %></td>
           <td><%= display_hours(activity.duration) %></td>
         </tr>
