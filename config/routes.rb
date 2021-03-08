@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard', to: 'dashboard#show'
   root 'sessions#home'
   
   get '/signup', to: 'users#new'
@@ -10,9 +11,9 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :update]
   resources :activities
   resources :roles do 
-    resources :volunteers, only: [:index]
+    resources :volunteers, only: [:index]#, controller: 'role_volunteers'
   end
   resources :volunteers do
-    resources :activities, only: [:new, :create, :index]
+    resources :activities, only: [:new, :create, :index] 
   end
 end

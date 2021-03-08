@@ -11,15 +11,15 @@
       <h3>This month</h3>
       <p><span class="emphasis">Total hours: </span><%= display_hours(@user.hours_this_month) %></p>
       <p><span class="emphasis">Total engagements: </span><%= @user.activities_this_month %> </p>
-      <p><span class="emphasis">Unique volunteers: </span></p>
-      <p><span class="emphasis">New volunteers: </span></p>
+      <p><span class="emphasis">Unique volunteers: </span><%= @user.unique_volunteers_this_month %></p>
+      <p><span class="emphasis">New volunteers: </span><%= @user.new_volunteers_this_month %></p>
     </div>
     <div>
       <h3>This year</h3>
       <p><span class="emphasis">Total hours: </span><%= display_hours(@user.hours_this_year) %></p>
       <p><span class="emphasis">Total engagements: </span><%= @user.activities_this_year %></p>
-      <p><span class="emphasis">Unique volunteers: </span></p>
-      <p><span class="emphasis">New volunteers: </span></p>
+      <p><span class="emphasis">Unique volunteers: </span><%= @user.unique_volunteers_this_year %></p>
+      <p><span class="emphasis">New volunteers: </span><%= @user.new_volunteers_this_year %></p>
     </div>
     <div>
       <h3>Cummulative</h3>
