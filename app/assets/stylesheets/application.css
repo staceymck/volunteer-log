@@ -40,9 +40,20 @@ body {
   margin-bottom: -50px;
 }
 
+hr {
+  margin: 1.5rem 0;
+  background-color: var(--medium-gray);
+  height: 1px;
+  border: none;
+}
+
 /* Font styles */
 .emphasis {
   font-weight: 500;
+}
+
+.primary-color {
+  color: var(--primary);
 }
 
 /* Links */

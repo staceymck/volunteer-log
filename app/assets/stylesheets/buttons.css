@@ -23,6 +23,7 @@
 .button.delete:hover {
   color: red;
   cursor: pointer;
+  background: initial;
 }
 
 .button:hover {
