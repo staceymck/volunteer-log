@@ -1,17 +1,23 @@
 <div class="flex-row">
   <div>
-    <h1>Volunteers</h1>
+    <% if @role %>
+      <h1>Volunteers - <%= @role.title.titlecase %></h1>
+    <% else %>
+      <h1>Volunteers</h1>
+    <% end %>
   </div>
   <div>
-    <%= link_to "Add new volunteer", new_volunteer_path, class: "button" %>
+    <%= link_to "Add new volunteer", new_volunteer_path, class: "button" if !@role %>
   </div>
 </div>
 
 <div>
+  <% if !@role %>
   <%= form_tag volunteers_path, method: :get do %>
     <%= label_tag :query, "Search by name" %>
     <%= text_field_tag :query %>
     <%= submit_tag "Search", name: nil, class: "button-search"%> 
+  <% end %>
   <% end %>
 </div>
 
@@ -19,10 +25,17 @@
   <table class="full-width">
     <thead>
       <tr>
-        <th><%= link_to "First name", :query => "first_name" %></th>
-        <th><%= link_to "Last name", :query => "last_name" %></th>
-        <th><%= link_to "Last volunteer date", :query => "date" %></th>
-        <th><%= link_to "Total hours", :query => "hours" %></th>
+        <% if @role %>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Phone</th>
+          <th>Email</th>
+        <% else %>
+          <th><%= link_to "First name", :query => "first_name" %></th>
+          <th><%= link_to "Last name", :query => "last_name" %></th>
+          <th><%= link_to "Last volunteer date", :query => "date" %></th>
+          <th><%= link_to "Total hours", :query => "hours" %></th>
+        <% end %>
       <tr>
     </thead>
     <tbody>
@@ -30,8 +43,13 @@
         <tr class="table-content">
           <td><%= link_to v.first_name, volunteer_path(v) %></td>
           <td><%= v.last_name %></td>
-          <td><%= display_date(v.last_activity_date) %></td>
-          <td><%= display_hours(v.total_hours) %></td>
+          <% if @role %>
+            <td><%= display_phone(v.phone) %></td>
+            <td><%= mail_to v.email %></td>
+          <% else %>
+            <td><%= display_date(v.last_activity_date) %></td>
+            <td><%= display_hours(v.total_hours) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

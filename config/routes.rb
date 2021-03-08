@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   
   resources :users, except: [:new, :update]
   resources :activities
-  resources :roles
+  resources :roles do 
+    resources :volunteers, only: [:index]
+  end
   resources :volunteers do
     resources :activities, only: [:new, :create, :index]
   end
