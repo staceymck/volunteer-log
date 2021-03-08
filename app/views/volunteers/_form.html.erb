@@ -1,8 +1,10 @@
+<%= render partial: '/shared/validation_errors', locals: {object: volunteer}%>
+
 <%= form_for volunteer do |f| %>
   <%= f.label :first_name %><br>
-  <%= f.text_field :first_name, required: true %><br>
+  <%= f.text_field :first_name %><br>
   <%= f.label :last_name %><br>
-  <%= f.text_field :last_name, required: true %><br>
+  <%= f.text_field :last_name %><br>
   <%= f.label :phone %><br>
   <%= f.text_field :phone %><br>
   <%= f.label :email %><br>

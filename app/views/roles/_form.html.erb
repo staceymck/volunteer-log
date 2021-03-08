@@ -1,3 +1,5 @@
+<%= render partial: '/shared/validation_errors', locals: {object: role }%>
+
 <%= form_for role do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>

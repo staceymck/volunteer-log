@@ -1,9 +1,11 @@
+<%= render partial: '/shared/validation_errors', locals: {object: activity} %>
+<%= render partial: '/shared/validation_errors', locals: {object: volunteer} if volunteer %>
+
 <%= form_for [volunteer, activity] do |f| %>
-  
   <%= f.label :date %><br>
-  <%= f.date_field :date, required: true %><br>
+  <%= f.date_field :date %><br>
   <%= f.label :duration, "Duration (hrs)" %><br>
-  <%= f.number_field :duration, min: 0.25, step: 0.25, required: true %><br>
+  <%= f.number_field :duration, min: 0.25, step: 0.25 %><br>
   <% if volunteer %>
     <%= f.hidden_field :volunteer_id, value: volunteer.id %>
   <% else %>

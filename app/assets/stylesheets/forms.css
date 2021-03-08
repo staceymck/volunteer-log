@@ -24,3 +24,11 @@ input[type="checkbox"] {
 textarea {
   min-height: 100px;
 }
+
+.field_with_errors input {
+  border: 1px solid red;
+}
+
+.field_with_errors label {
+  color: red;
+}
