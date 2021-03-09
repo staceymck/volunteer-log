@@ -4,7 +4,7 @@
   </div>
   <div>
     <% if @volunteer %>
-      <%= link_to "Add new record for #{@volunteer.first_name}", new_volunteer_activity_path, class: "button" %>
+      <%= link_to "Add new record for #{@volunteer.first_name}", new_volunteer_activity_path(@volunteer), class: "button" %>
     <% else %>
     <%= link_to "Add new record", new_activity_path, class: "button" %>
     <% end %>
