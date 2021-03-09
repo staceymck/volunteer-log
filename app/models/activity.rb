@@ -11,22 +11,23 @@ class Activity < ApplicationRecord
 
   def self.apply_query(query)
     if query.present?
-      if query == "oldest"
+      case query
+      when "oldest"
         oldest.includes(:volunteer, :role)
-      elsif query == "newest" || query == "date"
+      when "newest"
         newest.includes(:volunteer, :role)
-      elsif query == "name"
+      when "name"
         includes(:volunteer, :role).order('volunteers.last_name')
-      elsif query == "role"
-        includes(:volunteer, :role).order('roles.title') #doesn't work with includes in nested route only joins
-      elsif query == "duration"
+      when "role"
+        includes(:volunteer, :role).order('roles.title')
+      when "duration"
         includes(:volunteer, :role).order(duration: :desc)
-      else #this is repeated in the search_by_full_name method in volunteer model but calling that method here doesn't work
+      else
         q = "%#{query}"
         includes(:volunteer, :role).where("first_name || ' ' || last_name LIKE ? OR first_name LIKE ? OR last_name LIKE ?", q, q, q)
       end
     else
-      newest.includes(:volunteer, :role) #this greatly speeds up 
+      newest.includes(:volunteer, :role) #includes greatly speeds up querying
     end
   end
 
