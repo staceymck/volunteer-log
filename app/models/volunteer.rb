@@ -9,7 +9,6 @@ class Volunteer < ApplicationRecord
   validates :first_name, :last_name, :background_check_status, :age_group, presence: true
   validate :one_contact_method_must_be_present
   validate :birthdate_must_be_in_reasonable_past
-  #validate that all enum fields are integers?
 
   scope :alpha, -> {order(:last_name, :first_name).distinct}
 
@@ -23,7 +22,6 @@ class Volunteer < ApplicationRecord
   end
 
   def start_year
-    #activities.minimum(:date).year
     created_at.year #catches volunteers who haven't had an activity record yet
   end
 
@@ -32,17 +30,17 @@ class Volunteer < ApplicationRecord
   end
 
   def self.apply_query(query)
-    if query == "last_name"
+    case query
+    when "last_name"
       alpha
-    elsif query == "first_name"
+    when "first_name"
       order(:first_name)
-    elsif query == "date"
+    when "date"
       left_joins(:activities).group('volunteers.id').order('max(date) desc') #can left_joins be 'includes'?
-    elsif query == "hours"
+    when "hours"
       left_joins(:activities).group('volunteers.id').order('sum(duration) desc')
     else
       search_by_full_name(query)
-      #add a message to the page if no name matches instead of blank columns?
     end
   end
 
