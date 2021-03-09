@@ -24,7 +24,9 @@
 
 html, body {
   height: 100%;
+  width: 100%;
   margin: 0;
+  padding: 0;
 }
 
 body { 
@@ -35,7 +37,7 @@ body {
 
 .page-container {
   width: auto;
-  padding: 3% 10%;
+  padding: 3% 10%; 
   min-height: 90vh;
   margin-bottom: -50px;
 }
@@ -50,6 +52,11 @@ hr {
 /* Font styles */
 .emphasis {
   font-weight: 500;
+}
+
+.de-emphasize {
+  font-weight: 300;
+  font-size: 1.5rem;
 }
 
 .primary-color {
@@ -95,7 +102,7 @@ nav hr {
   border: none;
 }
 
-/* Footer */
+/* Main Footer */
 footer {
   height: 50px;
   text-align: right;
@@ -108,6 +115,7 @@ footer {
   height: 50px;
 }
 
+/* Filter + search styles */
 .filter-options {
   font-weight: 500;
 }

@@ -2,40 +2,69 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-/* User Dashboard */
-.dashboard .link-block a:first-child {
-  margin-left: initial;
-}
-
-.dashboard .link-block {
-  color: var(--primary);
-  font-weight: 500;
-}
-
-.dashboard h1 {
-  font-size: 1.5rem;
-}
-
-.dashboard hr {
-  margin: 1.5rem 0;
-  background-color: var(--medium-gray);
-  height: 1px;
-  border: none;
-}
-
-.tri-flex-container {
+/* Login and Signup Styles */
+.visitor-container {
+  max-width: 80%;
+  min-height: 480px;
   display: flex;
-  justify-content: space-between;
-  width: 80%;
+  align-items: center;
+  margin: 2rem auto;
 }
 
-.dashboard h2 {
+.page-container.visitor {
+  width: auto;
+  padding: 3% 10%; 
+  min-height: 80vh;
+}
+
+.left-item {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.right-item {
+  flex: 1;
+}
+
+.visitor-container input:not([type="submit"]) {
+  width: 100%;
+}
+
+.visitor-container h1 {
+  color: var(--primary);
+}
+
+.visitor-container h2 {
   font-size: 2rem;
 }
 
-.dashboard h3 {
-  margin-top: .75rem;
-  font-size: 1.5rem;
-  color: var(--primary);
+.button_to .github {
+  background: initial;
+  border: initial;
+  color: var(--main-font-color);
+  padding: initial;
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-decoration: underline;
+}
+
+.button_to .github:hover {
+  background: initial;
+  color: var(--primary-dark);
+}
+
+.visitor-footer {
+  height: 20vh;
+  background: var(--primary);
+  clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+}
+
+.link-block.visitor {
+  padding-top: 3rem;
+  position: relative;
+  color: #fff;
+} 
+
+.link-block.visitor a {
+  color: #fff;
 }
