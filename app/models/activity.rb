@@ -1,52 +1,41 @@
 class Activity < ApplicationRecord
   belongs_to :volunteer
   belongs_to :role
-  scope :user_set, -> (user) {joins(:volunteer).where(volunteers: {user_id: user.id})}
-  scope :newest, -> {order(date: :desc)}
-  scope :oldest, -> {order(:date)}
+
   validates :date, :duration, :volunteer_id, :role_id, presence: true
   validates :duration, numericality: {greater_than: 0, less_than_or_equal_to: 24} #make it a float?
   validate :date_cannot_be_in_future
   #validate that volunteer id and role id must belong to user (and that it has both)?
 
-  # def self.user_set(user)
-  #   joins(:volunteer).where(volunteers: {user_id: user.id})
-  # end
+  scope :user_set, -> (user) {joins(:volunteer).where(volunteers: {user_id: user.id})}
+  scope :newest, -> {order(date: :desc)}
+  scope :oldest, -> {order(:date)}
 
   def self.apply_query(query)
     if query.present?
       if query == "oldest"
-        oldest
-      elsif query == "newest"
-        newest
-      else
-        where("first_name LIKE ?", "%#{query}%")  #need to make it searchable by first and/or last name
+        oldest.includes(:volunteer, :role)
+      elsif query == "newest" || query == "date"
+        newest.includes(:volunteer, :role)
+      elsif query == "name"
+        includes(:volunteer, :role).order('last_name')
+      elsif query == "role"
+        includes(:volunteer, :role).order('title')
+      elsif query == "duration"
+        includes(:volunteer, :role).order(duration: :desc)
+      else #this is repeated in the search_by_full_name method in volunteer model but calling that method here doesn't work
+        q = "%#{query}"
+        includes(:volunteer, :role).where("first_name || ' ' || last_name LIKE ? OR first_name LIKE ? OR last_name LIKE ?", q, q, q)
       end
     else
-      newest
+      newest.includes(:volunteer, :role) #this greatly speeds up 
     end
   end
 
-  #make this a private method?
+  private
   def date_cannot_be_in_future
-    if date > Date.today
+    if date && date > Date.today
       errors.add(:date, "can't be in the future")
     end
   end
-
-  #Alternative if diving out search vs filter as 2 different types of queries
-  # def self.filter_results(search, chosen_filter)
-  #  if search.present?
-  #   where("first_name LIKE ?", "%#{search}%")
-  #  elsif chosen_filter.present?
-  #   if chosen_filter == "oldest"
-  #     oldest
-  #   elsif chosen_filter == "newest"
-  #     newest
-  #   end
-  #  else
-  #    newest
-  #  end
-  # end
-
 end
