@@ -18,20 +18,17 @@ class VolunteersController < ApplicationController
 
   def index
     if params[:role_id] && @role = current_user.roles.find_by(id: params[:role_id])
-      @volunteers = @role.volunteers.alpha.uniq
+      @volunteers = @role.volunteers.alpha
     else
-      @error = "Role doesn't exist" if params[:role_id]
+      @error = "Invalid role" if params[:role_id]
+      flash.now[:alert] = "Please enter a name" if params[:query] == ""
       if params[:query].present?
         @volunteers = current_user.volunteers.apply_query(params[:query])
-      elsif params[:query] == ""
-        flash.now[:alert] = "Please enter a name"
-        @volunteers = current_user.volunteers.alpha
       else
         @volunteers = current_user.volunteers.alpha
       end
-    if @volunteers.empty? 
-      flash.now[:alert] = "No results"
     end
+    flash.now[:alert] = "No results" if @volunteers.empty? 
   end
 
   def show
