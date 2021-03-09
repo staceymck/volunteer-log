@@ -2,6 +2,7 @@ class RolesController < ApplicationController
   before_action :find_role, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
   
   def index
+    flash.now[:alert] = "Please enter a title" if params[:query].strip == ""
     @roles = current_user.roles.apply_query(params[:query])
   end
   
