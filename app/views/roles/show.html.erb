@@ -3,7 +3,9 @@
     <h1><%= @role.title.titlecase %></h1>
   </div>
   <div>
-    <p><%= button_to 'X Delete role', role_path(@role), method: :delete, class: 'button delete' %></p>
+    <%= button_to 'X Delete role', role_path(@role), method: :delete, 
+      data: {confirm: "ALERT: Deleting this role will delete all associated activity records. You can change the role to a 'no opportunities' status, or click 'Ok' to delete this role and all its activity records." },
+      class: 'button delete' %>
   </div>
 </div>
 <div>

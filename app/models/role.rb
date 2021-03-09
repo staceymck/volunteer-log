@@ -1,6 +1,6 @@
 class Role < ApplicationRecord
   belongs_to :user
-  has_many :activities
+  has_many :activities, dependent: :destroy
   has_many :volunteers, through: :activities
 
   enum age_requirement: {over_eighteen: 0, over_twenty_one: 1, chaperone_if_under_eighteen: 2}

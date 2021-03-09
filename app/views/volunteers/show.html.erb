@@ -1,6 +1,6 @@
 <div class="grid-container profile">
   <div class="grid-sidebar">
-    <% if @volunteer.photo %>
+    <% if @volunteer.photo.present? %>
       <%= image_tag("#{@volunteer.photo}", alt: "#{@volunteer.full_name}") %>
     <% else %>
       <%= image_tag("undraw_polaroid_gg6n.svg", alt: "Add a photo link to set a profile image") %>
@@ -13,7 +13,9 @@
       <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer) %></p>
     </div>
     <div>
-      <%= button_to 'X Delete volunteer', volunteer_path(@volunteer), method: :delete, class: "button delete" %>
+      <%= button_to 'X Delete volunteer', volunteer_path(@volunteer), method: :delete, 
+        data: {confirm: "ALERT: Deleting this volunteer will also delete all of their activity records. Do you want to continue?" },
+        class: "button delete" %>
     </div>
   </div>
   
