@@ -14,12 +14,13 @@
 <% if !@volunteer %>
   <div>
     <div class="filter-options">
-      <p>Sort by <%= link_to "Newest", activities_path(query: "newest") %> | <%= link_to "Oldest", activities_path(query: "oldest") %></p>
+      <span>Sort by <%= link_to "Newest", activities_path(query: "newest") %> | 
+      <%= link_to "Oldest", activities_path(query: "oldest") %></span>
     </div>
-    <div>
+    <div class="search-bar">
       <%= form_tag activities_path, method: :get do %>
-        <p><%= submit_tag "Search by volunteer:", name: nil %>
-        <%= text_field_tag :query %></p>
+        <%= text_field_tag :query, nil, placeholder: "Search by volunteer name" %>
+        <%= submit_tag "Search", name: nil %>
       <% end %>
     </div>
   </div>

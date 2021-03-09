@@ -118,8 +118,21 @@ footer {
 /* Filter + search styles */
 .filter-options {
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .filter-options a:first-child {
   margin-left: initial;
+}
+
+.search-bar input[type="text"] {
+  width: 30%;
+}
+
+.search-bar {
+  padding-bottom: 1rem;
+}
+
+.search-bar input[type="submit"] {
+  border: initial;
 }

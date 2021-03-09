@@ -11,15 +11,14 @@
   </div>
 </div>
 
-<div>
-  <% if !@role %>
-  <%= form_tag volunteers_path, method: :get do %>
-    <%= label_tag :query, "Search by name" %>
-    <%= text_field_tag :query %>
-    <%= submit_tag "Search", name: nil, class: "button-search"%> 
-  <% end %>
-  <% end %>
-</div>
+<% if !@role %>
+  <div class="search-bar">
+    <%= form_tag volunteers_path, method: :get do %>
+      <%= text_field_tag :query, nil, placeholder: "Search by name" %>
+      <%= submit_tag "Search", name: nil, class: "button-search"%> 
+    <% end %>
+  </div>
+<% end %>
 
 <div class="scroll">
   <table class="full-width">
