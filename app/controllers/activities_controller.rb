@@ -1,15 +1,25 @@
 class ActivitiesController < ApplicationController
   before_action :find_activity, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
-  #is there a way to refactor the set_user_roles and volunteers into a before_render action?
   
   def index
+    flash.now[:alert] = "Please enter a name" if params[:query].strip == ""
+
+    #handle nested route /volunteers/:volunteer_id/activities
     if params[:volunteer_id] && @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
       @activities = @volunteer.activities.apply_query(params[:query])
     else
-      @error = "Volunteer doesn't exist" if params[:volunteer_id]
+      @error = "Volunteer not found" if params[:volunteer_id]
       @activities = current_user.activities.apply_query(params[:query])
     end
+
+    flash.now[:alert] = "No results found" if @activities.empty?
   end
+
+  # def index
+  #   flash.now[:alert] = "Please enter a name" if params[:query] == ""
+  #   @activities = current_user.activities.apply_query(params[:query])
+  #   flash.now[:alert] = "No results found" if @activities.empty? #this could be set up as error message maybe if desired below table headers
+  # end
 
   def show
   end
