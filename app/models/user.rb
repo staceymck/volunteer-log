@@ -29,20 +29,19 @@ class User < ApplicationRecord
 
   #Monthly totals
   def hours_this_month
-    activities.where("cast(strftime('%m', date) as int) = ?", Date.today.month).sum(:duration)
+    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).sum(:duration)
   end
 
   def activities_this_month
-    activities.where("cast(strftime('%m', date) as int) = ?", Date.today.month).count
+    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).count
   end
 
-  # def unique_volunteers_this_month
-  #   activities.where("cast(strftime('%m', date) as int) = ?", Date.today.month).group('volunteer_id')
-  # end
+  def unique_volunteers_this_month
+    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).pluck(:volunteer_id).uniq.count
+  end
 
-  # def new_volunteers_this_month
-  #   activities.where("cast(strftime('%m', date) as int) = ?", Date.today.month).group('volunteer_id')
-  # end
+  def new_volunteers_this_month
+  end
 
   #Yearly totals
   def hours_this_year
@@ -53,9 +52,10 @@ class User < ApplicationRecord
     activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).count
   end
 
-  # def unique_volunteers_this_year
-  # end
+  def unique_volunteers_this_year
+    activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).pluck(:volunteer_id).uniq.count
+  end
 
-  # def new_volunteers_this_year
-  # end
+  def new_volunteers_this_year
+  end
 end
