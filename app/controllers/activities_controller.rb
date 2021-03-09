@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
       @activities = @volunteer.activities.apply_query(params[:query])
     else
       @error = "Volunteer doesn't exist" if params[:volunteer_id]
-      @activities = Activity.user_set(current_user).apply_query(params[:query])
+      @activities = current_user.activities.apply_query(params[:query])
     end
   end
 
@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
     if params[:volunteer_id] && @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
       @activity = @volunteer.activities.build
     else
-      @error = "Volunteer doesn't exist" if params[:volunteer_id]
+      @error = "Volunteer doesn't exist" if params[:volunteer_id] #make sure to display errors
       @activity = Activity.new
       set_user_volunteers
     end
@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
         set_user_volunteers
       end
       set_user_roles
-      render :new #fields with errors
+      render :new
     end
   end
 
@@ -51,7 +51,7 @@ class ActivitiesController < ApplicationController
     else
       set_user_volunteers
       set_user_roles
-      render :edit #fields with errors
+      render :edit
     end
   end
 
