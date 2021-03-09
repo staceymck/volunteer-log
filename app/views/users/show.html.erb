@@ -1,0 +1,6 @@
+<div>
+  <h1>Account details</h1>
+    <p><span class="emphasis">Username: </span><%= @user.username %></p>
+    <p><span class="emphasis">Email: </span><%= @user.email %></p><br>
+    <%= button_to "X Permanently delete account", user_path(@user), method: :delete, class: "button delete" %>
+</div>

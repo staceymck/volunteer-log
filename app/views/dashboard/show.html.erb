@@ -1,7 +1,7 @@
 <div class="dashboard">
   <h1>Welcome, <%= @user.username %></h1>
   <div class="link-block">
-    <%= link_to "Add volunteer", new_volunteer_path %> | <%= link_to "Add role", new_role_path %> | <%= link_to "Add activity record", new_activity_path %> | ADD ACCOUNT LINK 
+    <%= link_to "Add volunteer", new_volunteer_path %> | <%= link_to "Add role", new_role_path %> | <%= link_to "Add activity record", new_activity_path %> | <%= link_to "Account", user_path(@user) %>
     <hr>
   </div>
 
