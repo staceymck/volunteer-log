@@ -9,6 +9,8 @@
   font-weight: 500;
   width: initial;
   transition-duration: 0.2s;
+  cursor: pointer;
+  font-size: initial;
 }
 
 .button.delete {
@@ -17,17 +19,16 @@
   color: var(--medium-gray);
   font-size: 1rem;
   padding: initial;
-  
 }
 
 .button.delete:hover {
   color: red;
-  cursor: pointer;
   background: initial;
 }
 
-.button:hover {
+.button:hover, input[type="submit"]:hover {
   color: #fff;
+  border-color: var(--primary-dark);
   background: var(--primary-dark);
 }
 
@@ -36,4 +37,8 @@ input[type="submit"].search  {
   color: var(--main-font-color);
   border: none;
   padding-left: none;
+}
+
+.button-block {
+  padding-top: 1rem;
 }
