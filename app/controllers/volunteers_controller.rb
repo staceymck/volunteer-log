@@ -2,33 +2,14 @@ class VolunteersController < ApplicationController
   before_action :find_volunteer, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
   #find_volunteer must come before redirect so that @volunteer has a value
   
-  # def index
-  #   if params[:query].present?
-  #     @volunteers = current_user.volunteers.apply_query(params[:query])
-  #   elsif params[:query] == ""
-  #     flash.now[:alert] = "Please enter a name"
-  #     @volunteers = current_user.volunteers.alpha
-  #   else
-  #     @volunteers = current_user.volunteers.alpha
-  #   end
-  #   if @volunteers.empty? 
-  #     flash.now[:alert] = "No results"
-  #   end
-  # end
-
   def index
-    if params[:role_id] && @role = current_user.roles.find_by(id: params[:role_id])
-      @volunteers = @role.volunteers.alpha
+    flash.now[:alert] = "Please enter a name" if params[:query] == ""
+    if params[:query].present?
+      @volunteers = current_user.volunteers.apply_query(params[:query])
     else
-      @error = "Invalid role" if params[:role_id]
-      flash.now[:alert] = "Please enter a name" if params[:query] == ""
-      if params[:query].present?
-        @volunteers = current_user.volunteers.apply_query(params[:query])
-      else
-        @volunteers = current_user.volunteers.alpha
-      end
+      @volunteers = current_user.volunteers.alpha
     end
-    flash.now[:alert] = "No results" if @volunteers.empty? 
+    flash.now[:alert] = "No results found" if @volunteers.empty? #this could be set up as error message maybe if desired below table headers
   end
 
   def show
