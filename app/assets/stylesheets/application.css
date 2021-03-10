@@ -73,6 +73,10 @@ a:hover {
   color: var(--primary-dark);
 }
 
+.link-block a {
+  margin: .75rem;
+}
+
 /* Navbar */
 .navbar, .flex-row {
   display: flex;
@@ -81,12 +85,12 @@ a:hover {
   justify-content: space-between;
 }
 
-nav a {
+nav a, span {
   color: var(--main-font-color);
 }
 
-.link-block a {
-  margin: .75rem;
+.nav-options span, .nav-options a {
+  margin: .5rem;
 }
 
 #site-title a {
@@ -100,6 +104,35 @@ nav hr {
   height: 2px;
   margin: 1.5rem 0rem 2rem 0rem;
   border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 140px;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-options a {
+  color: var(--main-font-color);
+  padding: .75rem;
+  display: block;
+  margin: initial;
+}
+
+.dropdown-options a:hover {
+  background-color: var(--light-gray);
+}
+
+.dropdown:hover .dropdown-options {
+  display: block;
 }
 
 /* Main Footer */
@@ -142,4 +175,3 @@ footer {
   color: red;
   padding: 1rem 0;
 }
-

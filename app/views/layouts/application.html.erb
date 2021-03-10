@@ -14,20 +14,31 @@
   <body>
     <div class=<%= page_class %>>
     <% if current_user %>
-      <nav>
-        <div class="navbar">
-          <div id="site-title">
-            <%= link_to 'VolunteerLog', dashboard_path %> 
-          </div>
-          <div class= "link-block">
-            <%= link_to 'Volunteers', volunteers_path %> |
-            <%= link_to 'Roles', roles_path %> |
-            <%= link_to 'Activity Records', activities_path %> |
-            <%= link_to 'Logout', logout_path, method: 'delete' %> 
-          </div>
+    <nav>
+      <div class="navbar">
+        <div id="site-title">
+          <%= link_to 'VolunteerLog', dashboard_path %> 
         </div>
+        <div class= "nav-options">
+          <%= link_to 'Volunteers', volunteers_path %>
+          <span>|</span>
+          <%= link_to 'Roles', roles_path %>
+          <span>|</span>
+          <%= link_to 'Activity Records', activities_path %>
+          <span>|</span>
+          <div class="dropdown">
+              <span>Add New</span><span>|</span>
+              <div class="dropdown-options">
+                <%= link_to 'Add role', new_role_path %>
+                <%= link_to 'Add volunteer', new_volunteer_path %>
+                <%= link_to 'Add activity', new_activity_path %>
+              </div>
+            </div>
+          <%= link_to 'Logout', logout_path, method: 'delete' %> 
+        </div>
+      </div>
       <hr>
-     </nav>
+    </nav>
     <% end %>
     
     <%= yield %>
