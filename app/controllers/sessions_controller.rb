@@ -2,10 +2,6 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, except: [:destroy]
   before_action :redirect_if_logged_in, except: [:destroy]
 
-  def home
-    render :new
-  end
-
   def new
   end
 
