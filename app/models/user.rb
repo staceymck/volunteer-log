@@ -20,11 +20,11 @@ class User < ApplicationRecord
   end
 
   def total_activities
-    activities.count
+    activities.size
   end
 
   def unique_volunteers
-    volunteers.uniq.count
+    volunteers.distinct.size
   end
 
   #Monthly totals
@@ -33,11 +33,11 @@ class User < ApplicationRecord
   end
 
   def activities_this_month
-    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).count
+    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).size
   end
 
   def unique_volunteers_this_month
-    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).pluck(:volunteer_id).uniq.count
+    activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).select(:volunteer_id).distinct.size
   end
 
   def new_volunteers_this_month
@@ -49,11 +49,11 @@ class User < ApplicationRecord
   end
 
   def activities_this_year
-    activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).count
+    activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).size
   end
 
   def unique_volunteers_this_year
-    activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).pluck(:volunteer_id).uniq.count
+    activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).select(:volunteer_id).distinct.size
   end
 
   def new_volunteers_this_year
