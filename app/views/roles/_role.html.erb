@@ -1,0 +1,6 @@
+<tr class="table-content">
+  <td><%= link_to role.title, role_path(role) %></td>
+  <td><%= remove_underscores(role.status) %></td>
+  <td><%= remove_underscores(role.frequency) %></td>
+  <td><%= display_age_requirement(role) %></td>
+</tr>

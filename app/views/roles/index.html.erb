@@ -34,16 +34,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @roles.each do |role| %>
-        <tr class="table-content">
-          <td><%= link_to role.title, role_path(role) %></td>
-          <td><%= remove_underscores(role.status) %></td>
-          <td><%= remove_underscores(role.frequency) %></td>
-          <td><%= display_age_requirement(role) %></td>
-        </tr>
-      <% end %>
+      <%= render(@roles) || message_if_no_records(@roles) %>
     </tbody>
   </table>
-  <%= display_message(@message) %>
 </div>
 
