@@ -17,7 +17,7 @@
       <nav>
         <div class="navbar">
           <div id="site-title">
-            <%= link_to 'VolunteerLog', '/' %> 
+            <%= link_to 'VolunteerLog', dashboard_path %> 
           </div>
           <div class= "link-block">
             <%= link_to 'Volunteers', volunteers_path %> |
@@ -36,7 +36,7 @@
     </div>
     <footer class="<%= 'visitor-footer' if !current_user %>">
       <div class="link-block<%= ' visitor' if !current_user %>">
-        <%= link_to 'Home', '/' %> | <%= link_to 'GitHub Repo', 'https://github.com/staceymck/volunteer-log' %>
+        <%= link_to 'Home', dashboard_path %> | <%= link_to 'GitHub Repo', 'https://github.com/staceymck/volunteer-log' %>
       </div>
     </footer>
   </body>

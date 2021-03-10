@@ -43,7 +43,7 @@ class VolunteersController < ApplicationController
 
   def destroy
     @volunteer.destroy
-    redirect_to '/'
+    redirect_to dashboard_path
   end
 
   private
@@ -54,7 +54,7 @@ class VolunteersController < ApplicationController
   def redirect_if_not_authorized
     if @volunteer.user != current_user
       flash[:alert] = "Invalid record"
-      redirect_to '/'
+      redirect_to dashboard_path
     end
   end
 

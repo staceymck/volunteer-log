@@ -50,7 +50,7 @@ class RolesController < ApplicationController
   def redirect_if_not_authorized
     if @role.user != current_user
       flash[:alert] = "Invalid record"
-      redirect_to '/'
+      redirect_to dashboard_path
     end
   end
 end
