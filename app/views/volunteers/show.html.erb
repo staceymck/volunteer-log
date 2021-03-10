@@ -1,16 +1,11 @@
 <div class="grid-container profile">
   <div class="grid-sidebar">
-    <% if @volunteer.photo.present? %>
-      <%= image_tag("#{@volunteer.photo}", alt: "#{@volunteer.full_name}") %>
-    <% else %>
-      <%= image_tag("undraw_polaroid_gg6n.svg", alt: "Add a photo link to set a profile image") %>
-    <% end %>
-  
+    <%= display_profile_image(@volunteer) %>
     <div>
       <p>Volunteer since <%= @volunteer.start_year %></p>
       <p>Total hours: <%= display_hours(@volunteer.total_hours) %></p>
-      <p><%= link_to 'See all activity records', volunteer_activities_path(@volunteer) %></p>
-      <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer) %></p>
+      <p><%= link_to 'See all activity records', volunteer_activities_path(@volunteer), class: "emphasis" %></p>
+      <p><%= link_to 'Edit volunteer', edit_volunteer_path(@volunteer), class: "emphasis" %></p>
     </div>
     <div>
       <%= button_to 'X Delete volunteer', volunteer_path(@volunteer), method: :delete, 
@@ -39,7 +34,7 @@
       <p><span class="emphasis">Birthday: </span><%= display_date(@volunteer.birthday) %></p>
       <p><span class="emphasis">Age range: </span><%= display_age_group(@volunteer) %></p>
       <p><span class="emphasis">Interests: </span><%= @volunteer.interests %></p>
-      <p><span class="emphasis">Roles: </span><span class="primary-color"><%= render partial: 'role_links', collection: @volunteer.roles.uniq, as: :role, spacer_template: 'shared/comma' || "No roles" %></span></p>
+      <p><span class="emphasis">Roles: </span><span class="primary-color"><%= render partial: 'role_links', collection: @volunteer.roles.distinct, as: :role, spacer_template: 'shared/comma' || "No roles" %></span></p>
     </div>
   </div>
 </div>
