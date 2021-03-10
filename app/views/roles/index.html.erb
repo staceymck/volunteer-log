@@ -19,6 +19,7 @@
       <%= text_field_tag :query, nil, placeholder: "Search by title" %>
       <%= submit_tag "Search", name: nil %>
     <% end %>
+    <%= render partial: '/shared/flash_search_guide' %>
   </div>
 </div>
 
@@ -43,5 +44,6 @@
       <% end %>
     </tbody>
   </table>
+  <%= display_message(@message) %>
 </div>
 

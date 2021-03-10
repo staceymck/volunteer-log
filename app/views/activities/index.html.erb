@@ -1,3 +1,5 @@
+<%= render partial: '/shared/flash_alerts' %>
+
 <div class="flex-row">
   <div>
     <h1>Activity Records<%= " for #{@volunteer.full_name}" if @volunteer %></h1>
@@ -22,6 +24,7 @@
         <%= text_field_tag :query, nil, placeholder: "Search by volunteer name" %>
         <%= submit_tag "Search", name: nil %>
       <% end %>
+      <%= render partial: '/shared/flash_search_guide' %>
     </div>
   </div>
 <% end %>
@@ -51,4 +54,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= display_message(@message) %>
 </div>

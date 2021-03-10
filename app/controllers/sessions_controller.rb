@@ -26,8 +26,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      flash[:message] = user.errors.full_messages.join(“, “)
-      redirect_to ‘/’
+      flash[:alert] = user.errors.full_messages.join(“, “)
+      redirect_to login_path
     end
  end
 

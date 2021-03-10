@@ -2,17 +2,18 @@ class ActivitiesController < ApplicationController
   before_action :find_activity, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
   
   def index
-    flash.now[:alert] = "Please enter a name" if params[:query].strip == ""
+    flash.now[:search_guide] = "Please enter a name" if params[:query] == ""
 
     #handle nested route /volunteers/:volunteer_id/activities
     if params[:volunteer_id] && @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
       @activities = @volunteer.activities.apply_query(params[:query])
     else
-      @error = "Volunteer not found" if params[:volunteer_id]
+      flash.now[:alert] = "Volunteer not found" if params[:volunteer_id]
       @activities = current_user.activities.apply_query(params[:query])
     end
 
-    flash.now[:alert] = "No results found" if @activities.empty?
+    #handle new users and no results
+    set_message if @activities.empty?
   end
 
   # def index
@@ -25,14 +26,14 @@ class ActivitiesController < ApplicationController
   end
 
   def new #redirects to activity page if your save is unsuccessful and you press refresh - why?
-    set_user_roles
     if params[:volunteer_id] && @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
       @activity = @volunteer.activities.build
     else
-      @error = "Volunteer doesn't exist" if params[:volunteer_id] #make sure to display errors
+      flash[:alert] = "Volunteer not found" if params[:volunteer_id]
       @activity = Activity.new
       set_user_volunteers
     end
+    set_user_roles
   end
 
   def create
@@ -92,5 +93,13 @@ class ActivitiesController < ApplicationController
 
   def set_user_roles
     @roles = current_user.roles.alpha
+  end
+
+  def set_message
+    if current_user.activities.empty? || @volunteer.activities.empty?
+      @message = "No activities to display"
+    else
+      @message = "No results found"
+    end
   end
 end

@@ -2,8 +2,11 @@ class RolesController < ApplicationController
   before_action :find_role, :redirect_if_not_authorized, only: [:show, :edit, :update, :destroy]
   
   def index
-    flash.now[:alert] = "Please enter a title" if params[:query].strip == ""
+    flash.now[:search_guide] = "Enter a title to search" if params[:query] == ""
     @roles = current_user.roles.apply_query(params[:query])
+
+    #Account for new users and no results
+    set_message if @roles.empty? 
   end
   
   def show
@@ -52,5 +55,9 @@ class RolesController < ApplicationController
       flash[:alert] = "Invalid record"
       redirect_to '/'
     end
+  end
+
+  def set_message
+    current_user.roles.empty? ? @message = "No roles to display" : @message = "No results found"
   end
 end

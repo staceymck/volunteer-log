@@ -1,3 +1,5 @@
+<%= render partial: '/shared/flash_alerts' %>
+
 <div class="flex-row">
   <div>
     <% if @role %>
@@ -17,6 +19,7 @@
       <%= text_field_tag :query, nil, placeholder: "Search by name" %>
       <%= submit_tag "Search", name: nil, class: "button-search"%> 
     <% end %>
+    <%= render partial: '/shared/flash_search_guide' %>
   </div>
 <% end %>
 
@@ -53,4 +56,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= display_message(@message) %>
 </div>
