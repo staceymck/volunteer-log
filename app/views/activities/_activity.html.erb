@@ -1,0 +1,6 @@
+<tr class="table-content">
+  <td><%= link_to display_date(activity.date), activity_path(activity) %></td>
+  <td><%= activity.volunteer.full_name if !volunteer %></td>
+  <td><%= activity.role.title %></td>
+  <td><%= display_hours(activity.duration) %></td>
+</tr>
