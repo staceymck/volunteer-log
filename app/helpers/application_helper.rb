@@ -1,4 +1,9 @@
 module ApplicationHelper
+  
+  def page_class
+    current_user ? "page-container" : "visitor-page-container"
+  end
+  
   def display_hours(hours)
     sprintf("%g", hours)
   end

@@ -3,18 +3,19 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 /* Login and Signup Styles */
+.visitor-page-container {
+  width: auto;
+  padding: 3% 10%;
+  min-height: 80vh;
+  margin-bottom: -50px;
+}
+
 .visitor-container {
   max-width: 80%;
   min-height: 480px;
   display: flex;
   align-items: center;
   margin: 2rem auto;
-}
-
-.page-container.visitor {
-  width: auto;
-  padding: 3% 10%; 
-  min-height: 80vh;
 }
 
 .left-item {
