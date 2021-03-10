@@ -41,20 +41,8 @@
       <tr>
     </thead>
     <tbody>
-      <% @volunteers.each do |v| %>
-        <tr class="table-content">
-          <td><%= link_to v.first_name, volunteer_path(v) %></td>
-          <td><%= v.last_name %></td>
-          <% if @role %>
-            <td><%= display_phone(v.phone) %></td>
-            <td><%= mail_to v.email %></td>
-          <% else %>
-            <td><%= display_date(v.last_activity_date) %></td>
-            <td><%= display_hours(v.total_hours) %></td>
-          <% end %>
-        </tr>
-      <% end %>
+      <%= render partial: 'volunteer', collection: @volunteers, locals: {role: @role} %> 
+      <%= message_if_no_records(@volunteers) %>
     </tbody>
   </table>
-  <%= display_message(@message) %>
 </div>

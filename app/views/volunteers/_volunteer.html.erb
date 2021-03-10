@@ -1,0 +1,11 @@
+<tr class="table-content">
+  <td><%= link_to volunteer.first_name, volunteer_path(volunteer) %></td>
+  <td><%= volunteer.last_name %></td>
+  <% if role %>
+    <td><%= display_phone(volunteer.phone) %></td>
+    <td><%= mail_to volunteer.email %></td>
+  <% else %>
+    <td><%= display_date(volunteer.last_activity_date) %></td>
+    <td><%= display_hours(volunteer.total_hours) %></td>
+  <% end %>
+</tr>
