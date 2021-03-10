@@ -2,7 +2,7 @@
 <%= render partial: '/shared/validation_errors', locals: {object: volunteer} if volunteer %>
 
 <%= form_for [volunteer, activity] do |f| %>
-  <%= f.label :date, class: "required"' %><br>
+  <%= f.label :date, class: "required" %><br>
   <%= f.date_field :date, required: true %><br>
   <%= f.label :duration, "Duration (hrs)", class: "required" %><br>
   <%= f.number_field :duration, min: 0.25, step: 0.25, required: true %><br>
