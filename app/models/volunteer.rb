@@ -12,7 +12,7 @@ class Volunteer < ApplicationRecord
 
   scope :alpha, -> {order(:last_name, :first_name).distinct}
 
-  
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -22,7 +22,7 @@ class Volunteer < ApplicationRecord
   end
 
   def start_year
-    created_at.year #catches volunteers who haven't had an activity record yet
+    created_at.year
   end
 
   def last_activity_date
@@ -30,17 +30,21 @@ class Volunteer < ApplicationRecord
   end
 
   def self.apply_query(query)
-    case query
-    when "last_name"
-      alpha
-    when "first_name"
-      order(:first_name)
-    when "date"
-      left_joins(:activities).group('volunteers.id').order('max(date) desc') #can left_joins be 'includes'?
-    when "hours"
-      left_joins(:activities).group('volunteers.id').order('sum(duration) desc')
+    if query.present?
+      case query
+      when "last_name"
+        alpha
+      when "first_name"
+        order(:first_name)
+      when "date"
+        left_joins(:activities).group('volunteers.id').order('max(date) desc')
+      when "hours"
+        left_joins(:activities).group('volunteers.id').order('sum(duration) desc')
+      else
+        search_by_full_name(query)
+      end
     else
-      search_by_full_name(query)
+      alpha
     end
   end
 
