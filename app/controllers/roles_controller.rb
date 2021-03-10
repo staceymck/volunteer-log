@@ -4,9 +4,6 @@ class RolesController < ApplicationController
   def index
     flash.now[:search_guide] = "Enter a title to search" if params[:query] == ""
     @roles = current_user.roles.apply_query(params[:query])
-
-    #Account for new users and no results
-    set_message if @roles.empty? 
   end
   
   def show
@@ -55,9 +52,5 @@ class RolesController < ApplicationController
       flash[:alert] = "Invalid record"
       redirect_to '/'
     end
-  end
-
-  def set_message
-    current_user.roles.empty? ? @message = "No roles to display" : @message = "No results found"
   end
 end

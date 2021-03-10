@@ -12,6 +12,10 @@ module ApplicationHelper
   end
 
   def display_date(date)
-    date.try {strftime("%m/%d/%Y") }
+    date.try {strftime("%m/%d/%Y") } #Rails guide suggests &. as safe navigation operator - date.&(strftime("%m/%d/%Y"))
+  end
+
+  def message_if_no_records(collection)
+    (tag.tr tag.td('No records to display')) if collection.size == 0 
   end
 end

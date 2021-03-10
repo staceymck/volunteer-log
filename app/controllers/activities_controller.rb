@@ -11,16 +11,7 @@ class ActivitiesController < ApplicationController
       flash.now[:alert] = "Volunteer not found" if params[:volunteer_id]
       @activities = current_user.activities.apply_query(params[:query])
     end
-
-    #handle new users and no results
-    set_message if @activities.empty?
   end
-
-  # def index
-  #   flash.now[:alert] = "Please enter a name" if params[:query] == ""
-  #   @activities = current_user.activities.apply_query(params[:query])
-  #   flash.now[:alert] = "No results found" if @activities.empty? #this could be set up as error message maybe if desired below table headers
-  # end
 
   def show
   end
@@ -40,9 +31,9 @@ class ActivitiesController < ApplicationController
     @activity = current_user.activities.build(activity_params)
     if @activity.save
       redirect_to activity_path(@activity)
-    else #if form has errors, need to render with @volunteer value still set
-      if params[:volunteer_id]
-        @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id])
+    else 
+      if params[:volunteer_id] #if nested form has errors, need to render with @volunteer value still set
+        @volunteer = current_user.volunteers.find_by(id: params[:volunteer_id]) 
       else
         set_user_volunteers
       end
@@ -93,13 +84,5 @@ class ActivitiesController < ApplicationController
 
   def set_user_roles
     @roles = current_user.roles.alpha
-  end
-
-  def set_message
-    if current_user.activities.empty? || @volunteer.activities.empty?
-      @message = "No activities to display"
-    else
-      @message = "No results found"
-    end
   end
 end

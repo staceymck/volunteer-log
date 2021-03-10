@@ -12,9 +12,6 @@ class VolunteersController < ApplicationController
       flash.now[:alert] = "Role not found" if params[:role_id]
       @volunteers = current_user.volunteers.apply_query(params[:query])
     end
-
-     #handle new users and no results
-     set_message if @volunteers.empty?
   end
 
   def show
@@ -63,9 +60,5 @@ class VolunteersController < ApplicationController
 
   def find_volunteer
     @volunteer = Volunteer.find(params[:id])
-  end
-
-  def set_message
-    current_user.volunteers.empty? ? @message = "No activities to display" : @message = "No results found"
   end
 end
