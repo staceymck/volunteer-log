@@ -136,3 +136,10 @@ footer {
 .search-bar input[type="submit"] {
   border: initial;
 }
+
+/* Alerts */
+.alert {
+  color: red;
+  padding: 1rem 0;
+}
+
