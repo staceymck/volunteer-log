@@ -1,15 +1,17 @@
 <%= render partial: '/shared/validation_errors', locals: {object: role }%>
 
 <%= form_for role do |f| %>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %><br>
+  <%= f.label :title, class: "required" %><br>
+  <%= f.text_field :title, required: true %><br>
   <%= f.label :description %><br>
   <%= f.text_area :description %><br>
-  <%= f.label :age_requirement %><br>
+  <%= f.label :age_requirement, class: "required" %><br>
   <%= f.select :age_requirement, [["Under 18 with chaperone", "chaperone_if_under_eighteen"], ["Over 18", "over_eighteen"],["Over 21", "over_twenty_one"]] %><br>
-  <%= f.label :frequency %><br>
+  <%= f.label :frequency, class: "required" %><br>
   <%= f.select :frequency, [["Ongoing", "ongoing"], ["One time", "one_time"]] %><br>
-  <%= f.label :status %><br>
+  <%= f.label :days, "Days of week opportunities take place:" %><br>
+  <%= f.text_field :days, placeholder: "e.g., Tuesday, Thursday"%><br>
+  <%= f.label :status, class: "required" %><br>
   <%= f.select :status, [["Recruiting", "recruiting"], ["No current opportunities", "no_current_opportunities"]] %><br>
   <%= f.label :background_check_required, "Background check required?" %>
   <%= f.check_box :background_check_required %><br>

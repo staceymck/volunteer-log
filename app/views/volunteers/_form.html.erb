@@ -1,10 +1,10 @@
 <%= render partial: '/shared/validation_errors', locals: {object: volunteer}%>
 
 <%= form_for volunteer do |f| %>
-  <%= f.label :first_name %><br>
-  <%= f.text_field :first_name %><br>
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %><br>
+  <%= f.label :first_name, class: "required" %><br>
+  <%= f.text_field :first_name, required: true %><br>
+  <%= f.label :last_name, class: "required" %><br>
+  <%= f.text_field :last_name, required: true %><br>
   <%= f.label :phone %><br>
   <%= f.telephone_field :phone, placeholder: '(xxx) xxx-xxxx' %><br>
   <%= f.label :email %><br>
@@ -15,10 +15,10 @@
   <%= f.text_field :employer %><br>
   <%= f.label :birthday %><br>
   <%= f.date_field :birthday %><br>
-  <%= f.label :age_group %><br>
-  <%= f.select :age_group, [["Under 18", "under_eighteen"], ["18-21", "over_eighteen"], ["Over 21", "over_twenty_one"]] %><br>
-  <%= f.label :background_check_status %><br>
-  <%= f.select :background_check_status, [["Incomplete", "incomplete"], ["Approved", "approved"], ["Flagged", "flagged"]] %><br>
+  <%= f.label :age_group, class: "required" %><br>
+  <%= f.select :age_group, [["Under 18", "under_eighteen"], ["18-21", "over_eighteen"], ["Over 21", "over_twenty_one"]], required: true %><br>
+  <%= f.label :background_check_status, class: "required" %><br>
+  <%= f.select :background_check_status, [["Incomplete", "incomplete"], ["Approved", "approved"], ["Flagged", "flagged"]], required: true %><br>
   <%= f.label :photo, "Photo link" %><br>
   <%= f.url_field :photo %><br>
   <%= f.label :interests %><br>
