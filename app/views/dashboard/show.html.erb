@@ -32,7 +32,9 @@
       <p><span class="emphasis">Unique volunteers: </span><%= @user.unique_volunteers %></p>
     </div>
   </div>
-
-  
-  
+  <div>
+    <h3 id="birthday-heading">Birthdays this month</h3>
+    <%= render partial: 'birthday_list', collection: @user.birthday_list, as: :volunteer %>
+    <%= message_if_no_birthdays %>
+  </div>
 </div>

@@ -23,4 +23,8 @@ module ApplicationHelper
   def message_if_no_records(collection)
     (tag.tr tag.td('No records to display')) if collection.size == 0 
   end
+
+  # def display_list_name(name)
+  #   content_tag(:span, "#{name}: ", class: "emphasis")
+  # end
 end

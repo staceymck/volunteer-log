@@ -7,4 +7,8 @@ module DashboardHelper
      Then start tracking each volunteer engagement as an activity record."), class: "welcome")
     end
   end
+
+  def message_if_no_birthdays
+    "No birthdays to display" if current_user.birthday_list.size == 0
+  end
 end
