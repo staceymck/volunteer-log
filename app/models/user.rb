@@ -14,6 +14,10 @@ class User < ApplicationRecord
     end
   end
 
+  def birthday_list
+    volunteers.where("cast(strftime('%m', birthday) as int) = ?", Date.today.month)
+  end
+
   #Cummulative totals
   def total_hours
     activities.sum(:duration)
