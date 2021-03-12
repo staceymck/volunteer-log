@@ -5,10 +5,14 @@
 This Rails-based app helps volunteer-program staff track and report on volunteer engagement in their organization. Users can create records for volunteers, roles, and individual volunteer engagements. 
 
 The main dashboard displays key volunteer stats for the current month and year, as well as running totals. 
+<br><img src="app/assets/images/volunteer-log-dashboard.png" alt="List of family-friendly volunteer roles" width="500">
 
 Search and filter features (e.g., 'family-friendly roles') make it easier to find specific records and opportunities. 
+<br><img src="app/assets/images/volunteer-log-filter.png" alt="List of family-friendly volunteer roles" width="500">
+
 
 Volunteer profiles provide a space for tracking details helpful to volunteer-program staff, like a volunteer's background check status, contact info, birthday, and interests. 
+<br><img src="app/assets/images/volunteer-log-profile.png" alt="Volunteer profile preview" width="500">
 
 ## Installation and Usage
 
