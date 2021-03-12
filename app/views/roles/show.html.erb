@@ -1,6 +1,6 @@
 <div class="flex-row">
   <div>
-    <h1><%= @role.title.titlecase %></h1>
+    <h1><%= @role.title %></h1>
   </div>
   <div>
     <%= button_to 'X Delete role', role_path(@role), method: :delete, 
@@ -8,6 +8,7 @@
       class: 'button delete' %>
   </div>
 </div>
+
 <div>
   <p><span class="emphasis">Description: </span><%= @role.description %></p>
   <p><span class="emphasis">Status: </span><%= remove_underscores(@role.status) %></p>
@@ -16,6 +17,7 @@
   <p><span class="emphasis">Age requirement: </span><%= display_age_requirement(@role) %></p>
   <p><span class="emphasis">Background check required? </span><%= display_yes_no(@role.background_check_required)%></p>
 </div>
+
 <div class="button-block">
   <%= link_to 'View volunteers', role_volunteers_path(@role), class: "button" %>
   <%= link_to 'Edit role', edit_role_path(@role), class: "button" %>
