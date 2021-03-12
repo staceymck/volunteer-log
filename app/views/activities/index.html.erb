@@ -8,7 +8,7 @@
     <% if @volunteer %>
       <%= link_to "Add new record for #{@volunteer.first_name}", new_volunteer_activity_path(@volunteer), class: "button" %>
     <% else %>
-    <%= link_to "Add new record", new_activity_path, class: "button" %>
+      <%= link_to "Add new record", new_activity_path, class: "button" %>
     <% end %>
   </div>
 </div>
@@ -34,9 +34,7 @@
     <thead>
       <tr>
         <th><%= link_to "Date", :query => "newest" %></th>
-        <% if !@volunteer %>
-          <th><%= link_to "Volunteer", :query => "name" %></th>
-        <% end %>
+        <th><%= link_to "Volunteer", :query => "name" if !@volunteer %></th>
         <th><%= link_to "Role", :query => "role" %></th>
         <th><%= link_to "Duration (hrs)", :query => "duration" %></th>
       <tr>
