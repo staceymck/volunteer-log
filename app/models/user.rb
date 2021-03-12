@@ -44,9 +44,6 @@ class User < ApplicationRecord
     activities.where("cast(strftime('%m', date) as int) = ? AND cast(strftime('%Y', date) as int) = ?", Date.today.month, Date.today.year).select(:volunteer_id).distinct.size
   end
 
-  def new_volunteers_this_month
-  end
-
   #Yearly totals
   def hours_this_year
     activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).sum(:duration)
@@ -58,8 +55,5 @@ class User < ApplicationRecord
 
   def unique_volunteers_this_year
     activities.where("cast(strftime('%Y', date) as int) = ?", Date.today.year).select(:volunteer_id).distinct.size
-  end
-
-  def new_volunteers_this_year
   end
 end
