@@ -12,7 +12,7 @@ module VolunteersHelper
     if volunteer.photo.present?
       image_tag("#{volunteer.photo}", alt: "#{volunteer.full_name}")
     else
-      image_tag("undraw_polaroid_gg6n.svg", alt: "Add a photo link to set a profile image")
+      image_tag("undraw_polaroid_gg6n.svg", alt: "Volunteer profile image placeholder")
     end
   end
 end
