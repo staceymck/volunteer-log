@@ -1,9 +1,5 @@
 module ApplicationHelper
   
-  def page_class
-    current_user ? "page-container" : "visitor-page-container"
-  end
-  
   def display_hours(hours)
     sprintf("%g", hours)
   end
@@ -23,8 +19,4 @@ module ApplicationHelper
   def message_if_no_records(collection)
     (tag.tr tag.td('No records to display')) if collection.size == 0 
   end
-
-  # def display_list_name(name)
-  #   content_tag(:span, "#{name}: ", class: "emphasis")
-  # end
 end
